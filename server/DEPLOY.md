@@ -35,3 +35,11 @@ Para usar Postgres no desenvolvimento, exporte `DATABASE_URL` e reinicie. Em pro
 - O jogo antigo usa scripts/estilos inline, então a CSP ainda permite `unsafe-inline`. Não há MFA, fiscalização de criação de múltiplas contas, moderação ou sistema antifraude completo. Antes de dinheiro real: remover essa exceção, revisar dependências e realizar revisão de segurança independente, políticas legais e pagamentos com provedor adequado. Não há checkout nesta versão.
 - E-mails são identificadores privados; apenas nome do clube, pontuação e partidas entram no ranking público. Não registre senhas, cookies, códigos de recuperação ou URLs de banco em logs. Proteja as contas dos provedores com MFA. Use exportações/backups para dados que queira preservar.
 - As cartas e envelopes usam arte original FutBR; não usam a marca ou arte de pacotes Panini. Chances por carta exibidas: comum 70%, rara 25%, destaque 5%. Repetidas devolvem 20 moedas. Não há revenda ou valor em dinheiro.
+
+## Certificado do banco (SELF_SIGNED_CERT_IN_CHAIN)
+
+Se o deploy registrar esse código, baixe o certificado CA do próprio projeto Supabase em Database/Settings ou Project Settings/Database, seção SSL Configuration (Download certificate). Não copie certificados de fontes aleatórias e não use uma chave privada.
+
+No Render, em Environment → Secret Files, adicione um arquivo chamado `supabase-ca.crt` com o conteúdo PEM completo do certificado baixado. Em Environment Variables, defina `DATABASE_CA_FILE=/etc/secrets/supabase-ca.crt`. Salve e publique o commit mais recente. Como alternativa ao arquivo, `DATABASE_CA_CERT` aceita o PEM completo, inclusive com quebras de linha escapadas; configure somente uma dessas opções.
+
+O servidor adiciona essa CA à lista padrão de confiança e mantém `rejectUnauthorized: true`, incluindo verificação do hostname. Não use `NODE_TLS_REJECT_UNAUTHORIZED=0`, `rejectUnauthorized: false` ou parâmetros para desativar a validação. O certificado CA é público; sua senha do banco continua somente em DATABASE_URL. A conexão de produção precisa ser reavaliada após configurar a CA real.
