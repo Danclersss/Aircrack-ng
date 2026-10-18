@@ -133,3 +133,11 @@ A janela de transferências aparece como status apenas em Mercado. A agenda mant
 ## Notícias e identidade visual
 
 A página de notícias usa uma manchete principal, navegação por editoria e blocos por campeonato. Os registros vêm da carreira; ilustrações originais de estádio e uniformes não são fotografias reais. Filtros e abertura de matérias funcionam também no celular. Os campeonatos receberam emblemas próprios com cores mais vivas, sem pretensão de serem marcas oficiais. A marca FutBR foi centralizada geometricamente no SVG e no cabeçalho móvel.
+
+## Campo estável, agenda e chaveamento
+
+O iframe do campo permanece fora da região de interface recriada a cada atualização: a sessão e a visualização selecionada são preservadas durante a partida. O campo incorporado só fica visível após receber os dados reais, evitando a aparição de uma demonstração ou do modo errado durante o carregamento.
+
+A agenda usa dias livres brancos e dias de jogo coloridos por competição, com emblema do campeonato, mini escudo do adversário e indicação de mando. Os mini escudos também acompanham os nomes nas tabelas, partidas, escalações e carreiras. São interpretações gráficas originais das cores e formatos dos clubes, com versões específicas para os principais times; não são arquivos oficiais dos escudos. Clubes menores ou personalizados usam uma composição pelas cores e sigla cadastradas.
+
+O mata-mata mostra fases em colunas, ida/volta, agregado, decisão por pênaltis, classificados e campeão. Conexões só ligam confrontos já conhecidos, pois o motor pode sortear novamente na fase seguinte. Novas partidas guardam dados estruturados do chaveamento; históricos antigos recuperam os resultados disponíveis sem alterar placares ou progresso. A visualização tem rolagem própria para torneios grandes e navegação por fase.
