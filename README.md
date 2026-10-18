@@ -59,3 +59,11 @@ A hospedagem precisa incluir também `data/state-clubs.js`, `state-competitions.
 Ao pausar ou chegar ao intervalo, a análise ao vivo dá lugar à prancheta compacta com a formação dos dois clubes. Selecione um titular no campo, escolha o reserva e clique em **Confirmar substituição**. A seleção sozinha não altera o time. O botão no cabeçalho retoma a partida ou inicia o segundo tempo. No celular, a formação adversária pode ser expandida pelo nome do clube.
 
 Os limites de cinco substituições e três paradas no segundo tempo continuam valendo. Trocas no intervalo não consomem uma parada; uma seleção inválida também não consome parada. O campo ao vivo e os campos de escalação usam o mesmo desenho vetorial, com linhas proporcionais. A hospedagem deve incluir `match-tactics.js` e `match-tactics.css`.
+
+## Identidade visual por clube
+
+Cada clube das ligas e da base estadual possui uma paleta padrão. A carreira usa suas cores nos botões, navegação, destaques, cabeçalho e cartões da escalação. O tema muda ao assumir outro clube e ao carregar outra carreira, incluindo saves antigos. Os gramados mantêm sua cor natural. Cores claras recebem texto e detalhes com contraste ajustado.
+
+Em **Novo jogo**, selecionar o clube mostra uma prévia do tema. Em **Editor do jogo → Clubes e jogadores** ou **Estaduais**, os seletores **Principal** e **Secundária** permitem ajustar a identidade e criar cores para clubes personalizados. Guarde as alterações e aplique o pacote às próximas carreiras; as cores também acompanham os arquivos exportados. Para um clube novo sem paleta cadastrada, o tema inicial usa as cores padrão do jogo até ser personalizado.
+
+`club-themes.js` contém o catálogo de paletas, a seleção do tema e o cálculo de contraste. `club-themes.css` aplica as cores sem mudar o desenho dos campos. Inclua esses dois arquivos na hospedagem estática.
