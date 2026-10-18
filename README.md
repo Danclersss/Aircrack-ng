@@ -84,6 +84,16 @@ A página de atletas da Série A 2026 indicada pelo usuário na CBF retornou err
 
 ## Faltas e cartões
 
-O motor registra faltas e cartões por partida, inclusive nos jogos simultâneos. A frequência base é de aproximadamente 23 faltas por jogo; rivalidades cadastradas elevam a expectativa para 31, e pressão alta aumenta a intensidade. São parâmetros de equilíbrio do jogo, não estatísticas oficiais. Entradas temerárias recebem amarelo, entradas violentas recebem vermelho direto e o segundo amarelo expulsa. Faltas comuns podem terminar sem cartão. Jogadores já advertidos têm menor risco de nova advertência em faltas comuns. Expulsos deixam de atuar, enfraquecem os setores da equipe e não podem ser substituídos. A súmula e as estatísticas mostram as punições e são preservadas no save. Suspensões entre partidas e cartões das copas simuladas em bloco ainda não são implementados.
+O motor registra faltas e cartões por partida, inclusive nos jogos simultâneos. A frequência base é de aproximadamente 23 faltas por jogo; rivalidades cadastradas elevam a expectativa para 27, e pressão alta aumenta a intensidade. São parâmetros de equilíbrio do jogo, não estatísticas oficiais. Entradas temerárias recebem amarelo, entradas violentas recebem vermelho direto e o segundo amarelo expulsa. Faltas comuns podem terminar sem cartão. Jogadores já advertidos têm menor risco de nova advertência em faltas comuns. Expulsos deixam de atuar, enfraquecem os setores da equipe e não podem ser substituídos. A súmula e as estatísticas mostram as punições e são preservadas no save. Suspensões entre partidas e cartões das copas simuladas em bloco ainda não são implementados.
 
 O protótipo 3D agora separa quem passa, quem recebe e a trajetória da bola, com conduções, inversões, cruzamentos, defesas e finalizações. No modo por zonas, uma ficha mostra o lance, a equipe e o jogador envolvido. As sequências de demonstração são ilustrativas; o modo conectado continua interpretando os eventos do save, sem rastreamento individual real.
+
+## Agenda, torneios e bilheteria
+
+A agenda diferencia competições por cores, adversários pelas duas cores do clube e mando por ícones de casa/avião. Mostra ida e volta quando cadastradas no motor. Clique no dia para ver os detalhes. Adversários e mandos de sorteios futuros aparecem como a definir; não são inventados. O calendário continua sendo uma simulação, não a tabela oficial de datas.
+
+Torneios têm agrupamento por país e busca com filtros de importância, país/região e relação com o clube. Agenda, notícias, mercado e finanças receberam ajustes de espaço e leitura. Em Clube, os preços regulares e de mata-mata podem ser salvos por competição. O motor utiliza esses preços na bilheteria; clássicos e decisões aumentam demanda e tolerância ao preço, limitados à capacidade. Planos antigos sem essa configuração usam o preço geral da carreira.
+
+A Série D **ainda é parcial**: 96 clubes em 16 grupos de seis, dez jogos em ida e volta na fase de grupos; o mata-mata não está integrado e os quatro acessos simulados saem da classificação geral. Isso não reproduz integralmente o regulamento real. A limitação também aparece na tela do torneio.
+
+Números de camisa usam um fundo de contraste e traços maiores também no protótipo 3D. Os dois modos 3D continuam separados, aguardando aprovação do usuário antes da integração. A frequência de cartões foi reduzida, mantendo um aumento moderado em clássicos. O teste de equilíbrio executa 600 partidas com semente fixa para conferir médias e raridade de vermelhos.

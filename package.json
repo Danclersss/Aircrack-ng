@@ -5,7 +5,7 @@
   "description": "Jogo de gestão de futebol no navegador",
   "scripts": {
     "start": "python3 -m http.server 8000 --bind 0.0.0.0",
-    "test": "node tests/smoke.cjs && node tests/transfers.cjs && node tests/layout.cjs && node tests/tracker-states.cjs && node tests/state-season.cjs && node tests/match-tactics.cjs && node tests/club-themes.cjs && node tests/jerseys-prototype.cjs && node tests/prototype-modes.cjs && node tests/discipline-numbers.cjs"
+    "test": "node tests/smoke.cjs && node tests/transfers.cjs && node tests/layout.cjs && node tests/tracker-states.cjs && node tests/state-season.cjs && node tests/match-tactics.cjs && node tests/club-themes.cjs && node tests/jerseys-prototype.cjs && node tests/prototype-modes.cjs && node tests/discipline-numbers.cjs && node tests/season-experience.cjs && node tests/discipline-balance.cjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"
