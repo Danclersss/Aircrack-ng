@@ -43,3 +43,13 @@ Os testes usam `/usr/bin/chromium`; configure `CHROMIUM_PATH` para outro execut�
 Projeto independente, sem vínculo com Brasfoot ou entidades esportivas. Nomes, valores e atributos presentes na base podem exigir atualização e não são dados oficiais.
 
 A camada `redesign.css` centraliza a interface e organiza as telas responsivas. `match-analysis.js` calcula a densidade das posições reais da bola, normaliza a intensidade por partida e permite alternar entre mapa de calor e visualização ao vivo. O mapa representa movimentação da bola, não rastreamento individual dos jogadores.
+
+## Campo ao vivo e estaduais
+
+O botão **Ao vivo** mostra posse, ataque, ataque perigoso, escanteio, lateral, falta, tiro de meta, finalização e gol. A direção muda no segundo tempo. O campo identifica clube e atleta; sem fotos licenciadas, os avatares usam iniciais. As estatísticas de posse, finalizações, escanteios, laterais e faltas vêm da simulação e ficam no save. Renderizar ou pausar a tela não gera lances nem novas amostras de calor.
+
+A base estadual passou a ter 27 campeonatos e 269 clubes, editáveis em **Editor do jogo → Estaduais**. Consulte os campeonatos em **Torneios → Outras ligas → Campeonatos estaduais**. Foi removido o antigo corte de 12 equipes; campeonatos com número ímpar usam folgas. Carreiras em andamento preservam suas competições e adotam a base estadual na próxima temporada. Uma carreira nacional só participa da primeira divisão estadual se seu clube constar nos participantes daquela edição.
+
+**A composição oficial de 2026 está pendente de conferência.** A base é um rascunho editável e não deve ser apresentada como lista oficial dos 27 campeonatos. As fontes externas consultadas para essa conferência foram bloqueadas pela política de rede. Veja [data/README.md](data/README.md).
+
+A hospedagem precisa incluir também `data/state-clubs.js`, `state-competitions.js`, `live-tracker.js` e `live-tracker.css`.
