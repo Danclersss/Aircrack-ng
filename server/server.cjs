@@ -1,10 +1,12 @@
 'use strict';
 // Same-origin application server. TLS and DDoS protection belong at the edge.
 const http=require('node:http'),fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),{promisify}=require('node:util');
+const {validateEnvironment,describeStartupError}=require('./startup-diagnostics.cjs');let startupStage='configuration';
 (async()=>{
 const E=require('../arena/engine.js');require('../arena/players.js');const pool=globalThis.FutBRArenaPlayers;
 const root=path.resolve(__dirname,'..'),production=process.env.NODE_ENV==='production',port=Number(process.env.PORT)||8080,origin=process.env.PUBLIC_ORIGIN||`http://localhost:${port}`,scrypt=promisify(crypto.scrypt);
-if(production&&(!origin.startsWith('https://')||!process.env.DATABASE_URL||!process.env.TURNSTILE_SECRET||!process.env.TURNSTILE_SITE_KEY))throw Error('Production requires HTTPS origin, persistent DATABASE_URL and Turnstile keys.');
+validateEnvironment(process.env);
+startupStage='database';
 const dir=process.env.DATA_DIR||path.join(root,'.data');fs.mkdirSync(dir,{recursive:true,mode:0o700});const db=await require('./database.cjs')(dir);
 // Serialize account mutations, queue pairing and settlement on this single instance.
 let pending=Promise.resolve();function serial(fn){const result=pending.then(fn);pending=result.catch(()=>{});return result}
@@ -54,4 +56,4 @@ const server=http.createServer(async(req,res)=>{res.setHeader('X-Content-Type-Op
 server.requestTimeout=15000;server.headersTimeout=10000;server.maxConnections=300;server.listen(port,'0.0.0.0',()=>console.log(`FutBR server listening on ${port}`));
 process.on('SIGTERM',()=>{clearInterval(timer);server.close(async()=>{await db.close();process.exit(0)})});
 
-})().catch(e=>{console.error("Server startup failed:",e.name);process.exit(1)});
+})().catch(e=>{console.error("Server startup failed:",JSON.stringify(describeStartupError(e,startupStage)));process.exit(1)});

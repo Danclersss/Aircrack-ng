@@ -9,7 +9,7 @@
     "test:pvp": "node tests/arena-engine.cjs && node tests/arena-pvp.cjs",
     "setup:pvp-tests": "python3 tests/setup-turn.py",
     "start:online": "node server/server.cjs",
-    "test:online": "node tests/online-server.cjs && node tests/online-ui.cjs && node tests/ranked-ui.cjs"
+    "test:online": "node tests/startup-diagnostics.cjs && node tests/online-server.cjs && node tests/online-ui.cjs && node tests/ranked-ui.cjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"
