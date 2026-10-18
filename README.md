@@ -10,7 +10,7 @@ Requer Python 3. No diretório do projeto:
 python3 -m http.server 8000 --bind 0.0.0.0
 ```
 
-Abra a porta 8000 no seu navegador. Também é possível abrir `index.html` diretamente, mas um servidor estático mantém uma origem consistente para o armazenamento local. Para hospedar, publique todos os arquivos de interface: `index.html`, `modern.js`, `modern.css` e `assets/`.
+Abra a porta 8000 no seu navegador. Também é possível abrir `index.html` diretamente, mas um servidor estático mantém uma origem consistente para o armazenamento local. Para hospedar, publique todos os arquivos de interface: `index.html`, `modern.js`, `modern.css`, `redesign.css`, `match-analysis.js` e `assets/`.
 
 - **Carreiras:** cinco espaços, continuar, excluir, exportar e importar arquivos JSON de outros jogadores. A importação utiliza primeiro um espaço livre; quando todos estiverem ocupados, solicita qual substituir.
 - **Novo jogo:** escolha clube, liga, modo livre ou escalada. “Aprender jogando” ativa dicas contextuais que podem ser fechadas ou reativadas pelo botão Dicas.
@@ -41,3 +41,5 @@ Os testes usam `/usr/bin/chromium`; configure `CHROMIUM_PATH` para outro execut�
 - `assets/logo.svg`: versão vetorial do símbolo fornecido como referência.
 
 Projeto independente, sem vínculo com Brasfoot ou entidades esportivas. Nomes, valores e atributos presentes na base podem exigir atualização e não são dados oficiais.
+
+A camada `redesign.css` centraliza a interface e organiza as telas responsivas. `match-analysis.js` calcula a densidade das posições reais da bola, normaliza a intensidade por partida e permite alternar entre mapa de calor e visualização ao vivo. O mapa representa movimentação da bola, não rastreamento individual dos jogadores.
