@@ -14,7 +14,7 @@
     "url": "https://github.com/reinaldoJava/futebol-manager-brasileirao-2026",
     "reason": "O próprio catálogo declara junho de 2026. Não comprova o elenco e a numeração ao fim da primeira janela de transferências de 2026. Não foi importado."
   },
-  "behavior": "Não gerar números aleatórios nem apresentar a força como número de camisa. Mostrar travessão para números sem confirmação; permitir numeração e modelos editados pelo usuário nos pacotes. A base anterior de elencos permanece até a conferência.",
+  "behavior": "Preservar números cadastrados e atribuir números fictícios únicos de 1 a 99 quando ausentes. Os fictícios são identificados por shirtNumberSource=fictional; não representam numeração oficial. Permitir edição nos pacotes. A base anterior de elencos permanece até a conferência.",
   "officialKitVerification": "pending",
   "kitBehavior": "Modelos vetoriais sem marcas, baseados nas cores e padrões cadastrados. A correspondência exata com todos os uniformes oficiais de 2026 ainda não foi conferida.",
   "requestedSource": {
