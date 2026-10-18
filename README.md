@@ -53,3 +53,9 @@ A base estadual passou a ter 27 campeonatos e 269 clubes, editáveis em **Editor
 **A composição oficial de 2026 está pendente de conferência.** A base é um rascunho editável e não deve ser apresentada como lista oficial dos 27 campeonatos. As fontes externas consultadas para essa conferência foram bloqueadas pela política de rede. Veja [data/README.md](data/README.md).
 
 A hospedagem precisa incluir também `data/state-clubs.js`, `state-competitions.js`, `live-tracker.js` e `live-tracker.css`.
+
+## Escalação durante a partida
+
+Ao pausar ou chegar ao intervalo, a análise ao vivo dá lugar à prancheta compacta com a formação dos dois clubes. Selecione um titular no campo, escolha o reserva e clique em **Confirmar substituição**. A seleção sozinha não altera o time. O botão no cabeçalho retoma a partida ou inicia o segundo tempo. No celular, a formação adversária pode ser expandida pelo nome do clube.
+
+Os limites de cinco substituições e três paradas no segundo tempo continuam valendo. Trocas no intervalo não consomem uma parada; uma seleção inválida também não consome parada. O campo ao vivo e os campos de escalação usam o mesmo desenho vetorial, com linhas proporcionais. A hospedagem deve incluir `match-tactics.js` e `match-tactics.css`.
