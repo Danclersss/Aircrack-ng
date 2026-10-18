@@ -2,14 +2,22 @@
   "name": "futbr-2026",
   "version": "1.0.0",
   "private": true,
-  "description": "Jogo de gestão de futebol no navegador",
+  "description": "Jogo de gest\u00e3o de futebol no navegador",
   "scripts": {
     "start": "python3 -m http.server 8000 --bind 0.0.0.0",
-    "test": "node tests/smoke.cjs && node tests/transfers.cjs && node tests/layout.cjs && node tests/tracker-states.cjs && node tests/state-season.cjs && node tests/match-tactics.cjs && node tests/club-themes.cjs && node tests/jerseys-prototype.cjs && node tests/prototype-modes.cjs && node tests/discipline-numbers.cjs && node tests/season-experience.cjs && node tests/discipline-balance.cjs && node tests/calendar-chronology.cjs && node tests/pitch-motion-heat.cjs && node tests/calendar-migration.cjs && node tests/human-ui.cjs && node tests/arena-engine.cjs && node tests/arena-pvp.cjs",
+    "test": "node tests/smoke.cjs && node tests/transfers.cjs && node tests/layout.cjs && node tests/tracker-states.cjs && node tests/state-season.cjs && node tests/match-tactics.cjs && node tests/club-themes.cjs && node tests/jerseys-prototype.cjs && node tests/prototype-modes.cjs && node tests/discipline-numbers.cjs && node tests/season-experience.cjs && node tests/discipline-balance.cjs && node tests/calendar-chronology.cjs && node tests/pitch-motion-heat.cjs && node tests/calendar-migration.cjs && node tests/human-ui.cjs && node tests/arena-engine.cjs && node tests/arena-pvp.cjs && node tests/editorial.cjs && npm run test:online",
     "test:pvp": "node tests/arena-engine.cjs && node tests/arena-pvp.cjs",
-    "setup:pvp-tests": "python3 tests/setup-turn.py"
+    "setup:pvp-tests": "python3 tests/setup-turn.py",
+    "start:online": "node server/server.cjs",
+    "test:online": "node tests/online-server.cjs && node tests/online-ui.cjs && node tests/ranked-ui.cjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"
+  },
+  "dependencies": {
+    "pg": "^8.16.3"
+  },
+  "engines": {
+    "node": ">=24.0.0"
   }
 }
