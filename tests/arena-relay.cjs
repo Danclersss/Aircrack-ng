@@ -1,0 +1,10 @@
+const fs=require('node:fs');const net=require('node:net');const{spawn}=require('node:child_process');
+module.exports=async function(){
+ if(process.env.FUTBR_TEST_TURN_URL)return {config:{iceServers:[{urls:process.env.FUTBR_TEST_TURN_URL,username:'fixture',credential:'fixture-only'}],iceTransportPolicy:'relay'},close(){}};
+ const binary=process.env.FUTBR_TEST_TURN_BINARY||['/tmp/futbr-coturn/usr/bin/turnserver','/usr/bin/turnserver'].find(p=>fs.existsSync(p));
+ if(!binary)return {config:{iceServers:[]},close(){}};
+ const port=await new Promise((resolve,reject)=>{const listener=net.createServer();listener.once('error',reject);listener.listen(0,'127.0.0.1',()=>{const p=listener.address().port;listener.close(()=>resolve(p))})});
+ const local=binary.startsWith('/tmp/futbr-coturn/');const child=spawn(binary,['-n','--listening-ip=127.0.0.1','--relay-ip=127.0.0.1','--listening-port='+port,'--realm=futbr-local-test','--lt-cred-mech','--user=fixture:fixture-only','--allow-loopback-peers','--no-cli','--no-tls','--no-dtls','--no-udp','--simple-log','--no-stdout-log','--log-file=/tmp/futbr-turn-test-'+port+'.log','--pidfile=/tmp/futbr-turn-test-'+port+'.pid','--userdb=/tmp/futbr-turn-test-'+port+'.sqlite','--min-port=54000','--max-port=55000','--relay-threads=1'],{env:{...process.env,...(local?{LD_LIBRARY_PATH:'/tmp/futbr-coturn/usr/lib/x86_64-linux-gnu'}:{})},stdio:['ignore','ignore','pipe']});let error='';child.stderr.on('data',d=>error=(error+d.toString()).slice(-1500));child.on('error',e=>error=e.message);
+ try{let ready=false;for(let attempt=0;attempt<50;attempt++){ready=await new Promise(resolve=>{const socket=net.connect(port,'127.0.0.1');socket.once('connect',()=>{socket.destroy();resolve(true)});socket.once('error',()=>resolve(false));socket.setTimeout(200,()=>{socket.destroy();resolve(false)})});if(ready)break;await new Promise(r=>setTimeout(r,100))}if(!ready)throw Error('O TURN de teste não iniciou: '+error)}catch(e){child.kill();throw e}
+ return {config:{iceServers:[{urls:'turn:127.0.0.1:'+port+'?transport=tcp',username:'fixture',credential:'fixture-only'}],iceTransportPolicy:'relay'},close(){child.kill('SIGTERM')}};
+};

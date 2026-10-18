@@ -1,6 +1,6 @@
 # FutBR 2026
 
-Jogo de gestão de futebol inspirado nos managers clássicos. Interface em português, sem cadastro, servidor de aplicação ou dependências de rede durante o jogo.
+Jogo de gestão de futebol inspirado nos managers clássicos. Interface em português. A carreira funciona sem rede; a Arena é um modo PvP experimental entre dois navegadores, sem cadastro nesta primeira etapa.
 
 ## Jogar / desenvolver
 
@@ -10,7 +10,7 @@ Requer Python 3. No diretório do projeto:
 python3 -m http.server 8000 --bind 0.0.0.0
 ```
 
-Abra a porta 8000 no seu navegador. Também é possível abrir `index.html` diretamente, mas um servidor estático mantém uma origem consistente para o armazenamento local. Para hospedar, publique todos os arquivos de interface: `index.html`, `modern.js`, `modern.css`, `redesign.css`, `match-analysis.js` e `assets/`.
+Abra a porta 8000 no seu navegador. Também é possível abrir `index.html` diretamente, mas um servidor estático mantém uma origem consistente para o armazenamento local. Para hospedar, publique os arquivos JavaScript/CSS da raiz e as pastas `assets/`, `data/`, `arena/` e `experimentos/`, além de `index.html`. A Arena exige HTTPS (ou localhost durante o desenvolvimento).
 
 - **Carreiras:** cinco espaços, continuar, excluir, exportar e importar arquivos JSON de outros jogadores. A importação utiliza primeiro um espaço livre; quando todos estiverem ocupados, solicita qual substituir.
 - **Novo jogo:** escolha clube, liga, modo livre ou escalada. “Aprender jogando” ativa dicas contextuais que podem ser fechadas ou reativadas pelo botão Dicas.
@@ -27,6 +27,8 @@ O jogo não precisa de Node. Os testes de navegador precisam de Node, Chromium e
 
 ```sh
 npm ci
+# Neste ambiente Debian, prepare o retransmissor local para os testes PvP:
+npm run setup:pvp-tests
 # Em outro terminal, mantenha o servidor da porta 8000 em execução.
 npm test
 ```
@@ -98,7 +100,7 @@ A Série D **ainda é parcial**: 96 clubes em 16 grupos de seis, dez jogos em id
 
 Números de camisa usam um fundo de contraste e traços maiores também no protótipo 3D. Os dois modos 3D continuam separados, aguardando aprovação do usuário antes da integração. A frequência de cartões foi reduzida, mantendo um aumento moderado em clássicos. O teste de equilíbrio executa 600 partidas com semente fixa para conferir médias e raridade de vermelhos.
 
-## Datas unificadas e calor 3D
+## Datas unificadas e análise de campo
 
 O agendador usa uma única agenda do clube para a liga, estadual e copas. Não permite dois compromissos no mesmo dia e reserva no mínimo dois dias entre datas. As datas também conduzem a fila de partidas: os estaduais se intercalam com a liga, e fases posteriores à última rodada nacional continuam disponíveis. Datas planejadas ficam salvas em `seasonCalendar`; resultados e elencos dos saves anteriores são preservados. A rodada da liga mantém seu número enquanto se disputa uma copa entre rodadas.
 
@@ -106,4 +108,22 @@ As janelas de referência de 2026 são parâmetros em `season-calendar.js`, não
 
 O teste `calendar-chronology.cjs` disputa uma temporada completa com vitórias do usuário, verificando a ordem das partidas, intervalos, unicidade das datas e conclusão das copas. O teste estadual passa a conferir sua intercalação com as rodadas nacionais.
 
-Todos os campos usam o verde `#609b35`. O calor 3D está disponível como opção na análise de campo e como terceiro modo no laboratório; a altura indica concentração dos registros da bola. O mapa não representa rastreamento individual de jogadores. Os modos com atletas e zonas continuam experimentais. O laboratório mostra jogador e lance no rodapé; a zona começa na linha de fundo, e o painel segue uma linha horizontal com velocidade limitada e proteção visual da bola, inclusive em 4×.
+Todos os campos usam o verde `#609b35`. O calor 3D foi removido a pedido do usuário. Permanece o mapa padrão, com cores e transições mais suaves. O mapa não representa rastreamento individual de jogadores. Os modos com atletas e zonas continuam experimentais. O laboratório mostra jogador e lance no rodapé; a zona começa na linha de fundo, e o painel segue uma linha horizontal com velocidade limitada, contido na projeção real do campo e com proteção visual da bola, inclusive em 4×. As informações de posse e lance estão maiores e próximas ao gramado.
+
+## Arena PvP — primeira etapa
+
+A tela inicial oferece **Arena**, separada da carreira, em `arena/index.html`. O primeiro modo é um amistoso privado entre duas pessoas. Cada uma começa com os mesmos 24 jogadores, escolhe onze em 4–3–3 e pode trocar titulares por reservas da mesma posição. O limite de força é 850. Nomes vêm da base do jogo; força e números de camisa dessa coleção são parâmetros fictícios, sem alegação de numeração oficial. Uniforme e nome do time são personalizáveis. O perfil usa `futbr_arena_profile_v1`, sem modificar saves de carreira.
+
+Para jogar: um usuário cria o convite e envia o link; o outro abre/cola o convite, gera uma resposta e devolve o código. Quem criou cola a resposta. Com os dois conectados, ambos confirmam o time. O relógio avança aproximadamente um minuto de jogo a cada 0,9 segundo. Os jogadores se movimentam automaticamente; cada treinador define o estilo equilibrado, ofensivo ou defensivo. Placar, bola, jogador envolvido e eventos são compartilhados. Pausa e intervalo exigem confirmação dos dois para continuar. Falha ou perda de conexão interrompe a partida. O resultado do amistoso fica somente no navegador.
+
+A conexão usa um canal WebRTC ordenado e confiável, com troca manual de sinalização e STUN público em `arena/config.js`. Não há serviço de salas ou TURN público provisionado. Algumas redes e NATs não conseguem conexão direta; nesses casos a interface informa a falha e sugere outra rede. A compatibilidade ampla depende de um serviço TURN com credenciais temporárias. Não coloque credenciais permanentes no frontend. Os convites expiram em uma hora. A hospedagem estática do GitHub Pages atende os arquivos, mas não atua como servidor de partidas.
+
+O criador é a autoridade do relógio e da simulação. Mensagens e escalações são validadas; isso **não impede um host modificado de fraudar resultados**. Por isso, a versão é de amistosos sem ranking ou recompensas negociáveis. Antes de incluir loja, cartas compráveis, inventário confiável ou partidas ranqueadas, a próxima etapa precisa de backend com autenticação, simulação/validação de resultados e persistência no servidor. Nenhuma cobrança, loja ou recompensa paga foi implementada nesta etapa.
+
+### Testes PvP
+
+`arena/engine.js` separa as regras da interface e do transporte. `tests/arena-engine.cjs` verifica escalações, posições, orçamento, relógio, intervalo e equilíbrio em 200 partidas. `tests/arena-pvp.cjs` usa dois contextos reais de Chromium e um canal WebRTC real; verifica convite/resposta, confirmação conjunta, sincronização, táticas, pausa, intervalo, fim de jogo, segundo convite, desconexão e isolamento dos dados da carreira.
+
+O Chromium gerenciado deste ambiente bloqueia UDP direto. `tests/setup-turn.py` prepara coturn e três bibliotecas em `/tmp/futbr-coturn` para os testes: valida a assinatura do índice Debian com o chaveiro instalado, verifica SHA256 dos pacotes e mantém TLS habilitado nos downloads. Não altera políticas do navegador nem instala arquivos no sistema. O teste inicia automaticamente seu próprio TURN/TCP em uma porta aleatória de **127.0.0.1**, com credenciais de fixture e permissão de loopback exclusivamente de teste; encerra o processo ao terminar. Esse retransmissor não é acessível ao público e não deve ser usado em produção. O cache é conferido por hash em novas execuções do auxiliar. Em outro sistema, use coturn instalado e `FUTBR_TEST_TURN_BINARY`; sem retransmissor, o teste tenta conexão direta e só pode passar quando a rede/política permitir. Execute `npm run test:pvp` com o servidor estático da porta 8000 ativo.
+
+A janela de transferências aparece como status apenas em Mercado. A agenda mantém as datas de abertura/fechamento. Os textos mais promocionais da página inicial, calendário, clube e notícias foram substituídos por descrições diretas.

@@ -1,6 +1,0 @@
-'use strict';
-// A density grid lifted above the pitch, shared by the game and its laboratory.
-window.FutBRHeat={
- density(points,w=26,h=17){const grid=new Float32Array(w*h);for(const p of points||[]){if(!Array.isArray(p)||!Number.isFinite(p[0])||!Number.isFinite(p[1]))continue;const cx=p[0]/100*(w-1),cy=p[1]/100*(h-1);for(let y=Math.max(0,Math.floor(cy-3));y<=Math.min(h-1,Math.ceil(cy+3));y++)for(let x=Math.max(0,Math.floor(cx-3));x<=Math.min(w-1,Math.ceil(cx+3));x++){const d=(x-cx)**2+(y-cy)**2;if(d<10)grid[y*w+x]+=Math.exp(-d/3)}}return grid},
- render(container,points){const w=26,h=17,grid=this.density(points,w,h),max=Math.max(...grid,0);container.replaceChildren();container.setAttribute('role','img');container.setAttribute('aria-label',`Mapa de calor 3D · ${points.length} registros da bola`);if(!max)return;const fragment=document.createDocumentFragment(),colors=['#35aab4','#83c26a','#d7dc58','#f3ab49','#e45f42'];for(let y=0;y<h;y++)for(let x=0;x<w;x++){const v=grid[y*w+x]/max;if(v<.06)continue;const t=Math.sqrt(v),cell=document.createElement('i');cell.className='heat3d-cell';cell.style.cssText=`left:${x/w*100}%;top:${y/h*100}%;width:${100/w+.1}%;height:${100/h+.1}%;--lift:${(2+t*32).toFixed(1)}px;--heat-color:${colors[Math.min(4,Math.floor(t*4.99))]};opacity:${.35+t*.6}`;fragment.append(cell)}container.append(fragment)}
-};
