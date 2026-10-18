@@ -158,10 +158,20 @@ Novas contas começam na divisão J, seguindo I, H, G, F, E, D, C, B e A. Vitór
 
 ### Campo compartilhado e amistoso rápido
 
-A Arena usa o mesmo iframe persistente da carreira nos modos jogadores e zonas. Somente os dados mudam; o documento e as camisas permanecem montados. O renderizador usa um único relógio de animação e uma camada plana elevada para as camisas, evitando interseções com o gramado 3D. Antes da saída de bola, as duas equipes ficam no próprio campo. As cores são comparadas antes da exibição; se houver conflito, o visitante usa sua cor secundária ou um uniforme reserva de alto contraste. Isso não altera o uniforme salvo do clube.
+A Arena usa o mesmo iframe persistente da carreira nos modos jogadores e zonas. Somente os dados mudam; o documento e as camisas permanecem montados. O renderizador integrado usa um único relógio de animação e uma superfície Canvas 2D para pintar o campo em perspectiva, as camisas e a bola juntos, evitando interseções e repinturas de camadas 3D. Antes da saída de bola, as duas equipes ficam no próprio campo. As cores são comparadas antes da exibição; se houver conflito, o visitante usa sua cor secundária ou um uniforme reserva de alto contraste. Isso não altera o uniforme salvo do clube.
 
 Na pausa e no intervalo, toque no titular e depois no reserva para substituir. A lista mostra apenas posições compatíveis e impede duas versões do mesmo atleta. O painel conserva a seleção durante as atualizações. As seis formações podem ser alteradas na preparação e nas pausas: antes do início não gastam substituições; durante a partida, entradas necessárias contam no limite de cinco.
 
 O amistoso rápido procura primeiro outro jogador. Buscas sem adversário após 20 segundos iniciam um treino claramente identificado contra bot; também vale como alternativa quando a fila ranqueada está vazia. Esse treino não concede pontos, moedas ou progresso em missões ranqueadas. Ele entra no histórico com o modo `bot`, separado dos jogos contra pessoas. O bot não possui uma conta, não aparece no ranking e confirma automaticamente o intervalo. Os testes usam prazos reduzidos apenas no ambiente local.
 
 A abertura de pacote usa Web Animations no desktop e no celular, com alternativa imediata para movimento reduzido. `tests/match-experience.cjs` verifica animação em execução, centralização das cartas, busca e treino sem recompensas, posição antes do início, uniforme alternativo, mudança de formação, substituição em dois toques e permanência dos mesmos jogadores/documento entre atualizações.
+
+### Estabilidade visual e ritmo independente
+
+O vídeo de regressão mostrou oscilação mesmo aos 90 minutos, com a partida encerrada. Nos campos integrados, gramado, camisas, bola e sobreposições agora são pintados em uma única superfície Canvas 2D, mantendo a projeção do campo. As camisas vetoriais são rasterizadas uma vez por uniforme/número. Cenas paradas já estabilizadas não são repintadas; alterações de câmera, tamanho, uniforme e modo invalidam essa composição. O laboratório independente mantém seus controles e sua comparação original.
+
+O relógio online e o amistoso local avançam por padrão um minuto simulado a cada 450 ms, metade do intervalo anterior: aproximadamente 40,5 segundos de bola rolando por partida completa, além de preparação, pausas e intervalo. A duração máxima do intervalo continua em um minuto. O resumo por zonas tem ritmo independente: exibe um lance por cerca de dois segundos, interpola o movimento em 1,4 s e agrupa atualizações intermediárias, sem formar uma fila atrasada de lances. Pausa, intervalo e fim de jogo são reconhecidos imediatamente.
+
+Na Arena, os três mapas usam o mesmo iframe e a mesma área no desktop e no celular. O calor permanece no formato plano padrão e não usa mais um campo separado que expandia a página. O botão ativo recebe a mesma cor verde e `aria-pressed=true` nos três modos.
+
+`tests/field-playback.cjs` reproduz o placar final do vídeo, confirma camisas visíveis, compara pixels em quadros consecutivos, verifica as três dimensões e os botões ativos, e submete o resumo por zonas a atualizações mais rápidas que a apresentação. Os testes não acessam contas ou partidas de produção.
