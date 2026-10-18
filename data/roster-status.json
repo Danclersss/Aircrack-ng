@@ -1,0 +1,20 @@
+{
+  "target": "Elencos após a primeira janela de transferências de 2026, conforme calendário de cada país",
+  "officialRosterVerification": "blocked",
+  "officialShirtNumberVerification": "blocked",
+  "verifiedClubs": 0,
+  "reason": "Consultas às fontes históricas e oficiais bloqueadas por respostas HTTP 403 ou pelo proxy de rede.",
+  "sourcesNeeded": [
+    "www.transfermarkt.com.br",
+    "www.ogol.com.br",
+    "www.cbf.com.br",
+    "www.atletico.com.br"
+  ],
+  "excludedCandidate": {
+    "url": "https://github.com/reinaldoJava/futebol-manager-brasileirao-2026",
+    "reason": "O próprio catálogo declara junho de 2026. Não comprova o elenco e a numeração ao fim da primeira janela de transferências de 2026. Não foi importado."
+  },
+  "behavior": "Não gerar números aleatórios nem apresentar a força como número de camisa. Mostrar travessão para números sem confirmação; permitir numeração e modelos editados pelo usuário nos pacotes. A base anterior de elencos permanece até a conferência.",
+  "officialKitVerification": "pending",
+  "kitBehavior": "Modelos vetoriais sem marcas, baseados nas cores e padrões cadastrados. A correspondência exata com todos os uniformes oficiais de 2026 ainda não foi conferida."
+}

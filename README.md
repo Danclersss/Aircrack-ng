@@ -67,3 +67,15 @@ Cada clube das ligas e da base estadual possui uma paleta padrão. A carreira us
 Em **Novo jogo**, selecionar o clube mostra uma prévia do tema. Em **Editor do jogo → Clubes e jogadores** ou **Estaduais**, os seletores **Principal** e **Secundária** permitem ajustar a identidade e criar cores para clubes personalizados. Guarde as alterações e aplique o pacote às próximas carreiras; as cores também acompanham os arquivos exportados. Para um clube novo sem paleta cadastrada, o tema inicial usa as cores padrão do jogo até ser personalizado.
 
 `club-themes.js` contém o catálogo de paletas, a seleção do tema e o cálculo de contraste. `club-themes.css` aplica as cores sem mudar o desenho dos campos. Inclua esses dois arquivos na hospedagem estática.
+
+## Camisas, logo e teste 3D
+
+Os cartões da escalação e da prancheta agora usam camisas vetoriais sem escudos, patrocinadores ou marcas. A prancheta foi ampliada. Os modelos básicos seguem as cores e padrões cadastrados (camisa lisa, listras, faixa diagonal etc.), e podem ser ajustados no editor. Eles **não são um catálogo auditado de todos os uniformes oficiais de 2026**.
+
+O número dentro da camisa é a numeração do jogador, e a força continua em um indicador separado. Números sem confirmação aparecem como `—`; não são substituídos por números aleatórios, posição na lista ou OVR. O editor permite preencher números de 1 a 99, sem duplicidade por clube, e guardá-los nos pacotes. A logo usa uma imagem própria na navegação e `assets/favicon.svg` na aba do navegador.
+
+**Elencos e numeração oficiais ainda pendentes:** o alvo solicitado é o elenco após a primeira janela de transferências de 2026, por país. As fontes necessárias estão bloqueadas (403); a base encontrada de junho de 2026 não atende à referência e não foi aplicada. A alteração completa para jogadores reais e números oficiais de todos os clubes não está concluída. Veja `data/roster-status.json`. As liberações de fontes foram adicionadas ao rascunho das configurações do ambiente e precisam ser aplicadas para continuar a conferência.
+
+O campo 3D está exclusivamente em **`experimentos/campo-3d.html`**. É uma demonstração de perspectiva com lances ilustrativos, controles de câmera e camisas, sem ler ou alterar o localStorage do jogo. O campo principal continua em 2D. A página experimental não é carregada pelo jogo.
+
+Novos arquivos de hospedagem: `jersey-art.js`, `jersey-lineups.js`, `jersey-lineups.css`, `assets/favicon.svg` e, para a demonstração, `experimentos/campo-3d.html`.
