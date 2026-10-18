@@ -14,3 +14,6 @@
 
 body.embedded .visual{visibility:hidden}body.embedded[data-ready=true] .visual{visibility:visible}
 .field-club-crest{display:inline-block;width:18px;height:20px;vertical-align:middle;object-fit:contain;margin-right:5px}.zone-overlay>span:has(.field-club-crest){padding:3px 6px}
+/* Put all shirts on one lifted, flat paint layer: individual 3D intersections
+   with the grass previously made parts of moving shirts disappear. */
+#players{transform:translateZ(24px);transform-style:flat;isolation:isolate;z-index:4}.player{transform-style:flat;transform:translate(-50%,-70%);backface-visibility:visible;will-change:left,top}.player .jersey-svg{backface-visibility:visible;filter:none}.player.carrier .jersey-svg{filter:none}.player.carrier:after{content:'';position:absolute;inset:0;border:1px solid #e5ffae70;border-radius:8px;pointer-events:none}.player:before{transform:none;z-index:-1}.plane{transition:none}.ball{z-index:6}.field-lines{z-index:1}.zones{z-index:2}

@@ -155,3 +155,13 @@ Amistosos online usam salas com código de oito caracteres. Quem recebe o convit
 Novas contas começam na divisão J, seguindo I, H, G, F, E, D, C, B e A. Vitória rende 35 pontos, empate 12 e derrota retira 15, sem saldo negativo; promoções dão uma recompensa única. O matchmaking usa desempenho Elo para buscar adversários próximos. Missões diárias, semanais e marcos concedem moedas uma vez por período, com renovação pelo horário de Brasília. A classificação mostra apenas contas com partidas ranqueadas concluídas.
 
 `npm run test:online` verifica TLS, contas, migração, economia, trocas, missões, amistosos por código, ranking, mapas estáveis e fluxos da interface em dois navegadores. A simulação de 200 partidas e formações está em `node tests/arena-engine.cjs`. Os testes usam bancos temporários, sem acessar contas de produção.
+
+### Campo compartilhado e amistoso rápido
+
+A Arena usa o mesmo iframe persistente da carreira nos modos jogadores e zonas. Somente os dados mudam; o documento e as camisas permanecem montados. O renderizador usa um único relógio de animação e uma camada plana elevada para as camisas, evitando interseções com o gramado 3D. Antes da saída de bola, as duas equipes ficam no próprio campo. As cores são comparadas antes da exibição; se houver conflito, o visitante usa sua cor secundária ou um uniforme reserva de alto contraste. Isso não altera o uniforme salvo do clube.
+
+Na pausa e no intervalo, toque no titular e depois no reserva para substituir. A lista mostra apenas posições compatíveis e impede duas versões do mesmo atleta. O painel conserva a seleção durante as atualizações. As seis formações podem ser alteradas na preparação e nas pausas: antes do início não gastam substituições; durante a partida, entradas necessárias contam no limite de cinco.
+
+O amistoso rápido procura primeiro outro jogador. Buscas sem adversário após 20 segundos iniciam um treino claramente identificado contra bot; também vale como alternativa quando a fila ranqueada está vazia. Esse treino não concede pontos, moedas ou progresso em missões ranqueadas. Ele entra no histórico com o modo `bot`, separado dos jogos contra pessoas. O bot não possui uma conta, não aparece no ranking e confirma automaticamente o intervalo. Os testes usam prazos reduzidos apenas no ambiente local.
+
+A abertura de pacote usa Web Animations no desktop e no celular, com alternativa imediata para movimento reduzido. `tests/match-experience.cjs` verifica animação em execução, centralização das cartas, busca e treino sem recompensas, posição antes do início, uniforme alternativo, mudança de formação, substituição em dois toques e permanência dos mesmos jogadores/documento entre atualizações.
