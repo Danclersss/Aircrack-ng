@@ -5,13 +5,14 @@
   "description": "Jogo de gestão de futebol no navegador",
   "scripts": {
     "start": "python3 -m http.server 8000 --bind 0.0.0.0",
-    "test": "node tests/smoke.cjs && node tests/transfers.cjs && node tests/layout.cjs && node tests/tracker-states.cjs && node tests/state-season.cjs && node tests/match-tactics.cjs && node tests/club-themes.cjs && node tests/jerseys-prototype.cjs && node tests/prototype-modes.cjs && node tests/discipline-numbers.cjs && node tests/season-experience.cjs && node tests/discipline-balance.cjs && node tests/calendar-chronology.cjs && node tests/pitch-motion-heat.cjs && node tests/calendar-migration.cjs && node tests/human-ui.cjs && node tests/arena-engine.cjs && node tests/arena-pvp.cjs && node tests/editorial.cjs && node tests/visual-upgrade.cjs && npm run test:online",
+    "test": "node tests/smoke.cjs && node tests/transfers.cjs && node tests/layout.cjs && node tests/tracker-states.cjs && node tests/state-season.cjs && node tests/match-tactics.cjs && node tests/club-themes.cjs && node tests/jerseys-prototype.cjs && node tests/prototype-modes.cjs && node tests/discipline-numbers.cjs && node tests/season-experience.cjs && node tests/discipline-balance.cjs && node tests/calendar-chronology.cjs && node tests/pitch-motion-heat.cjs && node tests/calendar-migration.cjs && node tests/human-ui.cjs && node tests/arena-engine.cjs && node tests/arena-pvp.cjs && node tests/editorial.cjs && node tests/visual-upgrade.cjs && npm run test:world && npm run test:online",
     "test:pvp": "node tests/arena-engine.cjs && node tests/arena-pvp.cjs",
     "setup:pvp-tests": "python3 tests/setup-turn.py",
     "start:online": "node server/server.cjs",
     "test:online": "node tests/database-tls.cjs && node tests/startup-diagnostics.cjs && node tests/online-server.cjs && node tests/arena-progression.cjs && node tests/online-ui.cjs && node tests/collection-ui.cjs && node tests/ranked-ui.cjs && node tests/match-experience.cjs && node tests/field-playback.cjs && npm run test:journey && npm run test:identity",
     "test:journey": "node tests/journey.cjs",
-    "test:identity": "node tests/game-identity.cjs"
+    "test:identity": "node tests/game-identity.cjs",
+    "test:world": "node tests/world-leagues.cjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"

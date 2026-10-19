@@ -51,14 +51,49 @@
  else if(/olympique-de-marseille/.test(name))art=star(48,6,7,'#d9ab43')+text('OM','#1b9dc9',68,46)+'<path d="M18 84h60" stroke="#d9ab43" stroke-width="3"/>';
  else if(/boca-juniors/.test(name))art=shield('#153e81','<path d="M16 39h64v25H16Z" fill="#f4ca43"/>'+text('CABJ','#153e81',58,20),'#f4ca43');
  else if(/river-plate/.test(name))art=shield('#fff','<path d="m16 23 64 43-7 13-57-40Z" fill="#d52a40"/>'+text('CARP','#17222b',55,19));
- else if(/sporting-cp|real-betis|celtic/.test(name))art=name==='celtic'?circle('#147847',text('✥','#fff',72,58)):shield(a,`<path d="M17 37h62m-60 19h58m-45 20h32" stroke="${b}" stroke-width="10"/>`+text(short,'#fff',31,14));
+ else if(/real-betis/.test(name))art=name==='celtic'?circle('#147847',text('✥','#fff',72,58)):shield(a,`<path d="M17 37h62m-60 19h58m-45 20h32" stroke="${b}" stroke-width="10"/>`+text(short,'#fff',31,14));
  else if(/atletico-de-madrid|athletic-club|sunderland|southampton|sheffield-united|stoke-city|girona|sevilla/.test(name))art=shield('#fff',stripes('#da2d40')+text(short,'#203a64',31,14));
  else if(/valencia/.test(name))art='<path d="m13 12 12-8 10 9 13-9 13 9 10-9 12 8-10 8H23Z" fill="#19232b"/>'+shield('#f7c447',stripes('#d2323e')+text('VALENCIA','#17222b',31,11));
  else if(/real-sociedad|espanyol|deportivo|schalke|porto|brighton/.test(name))art=shield(a,stripes(b)+'<path d="M19 18h58v17H19Z" fill="#fff"/>'+text(short,a,31,15));
  else if(/fiorentina/.test(name))art='<path d="m48 5 40 46-40 46L8 51Z" fill="#fff" stroke="#7352a7" stroke-width="5"/><path d="M48 23v47m0-29q-26-21-19 7l19 13m0-20q26-21 19 7L48 61M35 73h26" stroke="#d42e43" stroke-width="6" fill="none"/>';
  else if(/roma$/.test(name))art=shield('#8c293d','<path d="M17 16h62v33H17Z" fill="#e4ba51"/>'+text('ROMA','#fff',73,19)+text('1927','#fff',86,10),'#d3a34d');
  else if(/benfica/.test(name))art='<path d="m5 17 30 6 13-12 13 12 30-6-18 20H23Z" fill="#e2bb51"/>'+shield('#d52d40','<circle cx="48" cy="49" r="18" fill="#fff"/>'+text('SLB','#d52d40',55,14),'#e2bb51');
- else {const hash=[...name].reduce((h,c)=>(h*31+c.charCodeAt(0))>>>0,0),style=hash%4,body=(style===0?stripes(b):style===1?`<path d="M16 57 77 19v17L27 75Z" fill="${b}"/>`:style===2?`<path d="M48 16h31v32q0 23-31 40Z" fill="${b}"/>`:`<path d="M17 45h62v15H17Z" fill="${b}"/>`)+text(short,ink,33,short.length>3?13:18);art=shield(a,body)}
+ else if(/^(penarol|libertad|alianza-lima|racing-club|cerro-porteno|deportivo-tachira)$/.test(name)){const [base,stripe,label]=name==='penarol'?['#17262c','#e9c138','CAP']:name==='libertad'?['#fff','#17262c','CL']:name==='alianza-lima'?['#fff','#174b83','AL']:name==='racing-club'?['#fff','#85c9e7','RACING']:name==='cerro-porteno'?['#1f4e9f','#d32943','CCP']:['#e8c238','#17262c','DTC'];art=shield(base,stripes(stripe)+'<path d="M18 18h60v17H18Z" fill="'+base+'"/>'+text(label,base==='#fff'?'#17362c':'#fff',31,label.length>3?12:17))}
+ else if(name==='nacional-uru')art='<ellipse cx="48" cy="51" rx="35" ry="44" fill="#fff" stroke="#21467d" stroke-width="4"/><path d="M16 39h64v20H16Z" fill="#c52940"/>'+text('C.N.F.','#fff',54,19)+text('1899','#21467d',79,11);
+ else if(name==='colo-colo')art=shield('#174b94','<path d="M18 17h60v18H18Z" fill="#e3e9ea"/>'+text('COLO-COLO','#174b94',29,10)+'<path d="m42 40 19 5 5 13-8 6v15H39V64l-9-5 5-14Z" fill="#f0e6d4"/><path d="m35 45 8-9 18 7 8 12-11-4-13 2-11 8Z" fill="#20322d"/>');
+ else if(/universidad-de-chile|universitario/.test(name))art=name==='universitario'?circle('#f7f0df',text('U','#7c2737',74,62),'#7c2737'):circle('#163f8b',text('U','#e32e43',75,65));
+ else if(name==='universidad-catolica')art=shield('#fff','<path d="M16 34h64v21H16Z" fill="#1b57a4"/><path d="M43 16h10v8h9v9h-9v9H43v-9h-9v-9h9Z" fill="#1b57a4"/>');
+ else if(/atletico-nacional/.test(name))art=shield('#fff','<path d="M48 16h31v32q0 23-31 40Z" fill="#176b43"/>'+text('AN','#176b43',54,30));
+ else if(name==='millonarios')art=circle('#185bab','<circle cx="48" cy="51" r="28" fill="#fff"/><path d="M30 66V37l18 17 18-17v29h-9V55l-9 9-9-9v11Z" fill="#185bab"/>'+text('MILLONARIOS','#fff',23,7));
+ else if(/independiente-del-valle/.test(name))art=shield('#185fa0',stripes('#17242c')+text('IDV','#fff',32,18)+star(48,58,13,'#c9e7ff'));
+ else if(name==='ldu-quito')art='<path d="M48 8 90 91H6Z" fill="#fff" stroke="#a7263c" stroke-width="4"/>'+text('U','#a7263c',79,47);
+ else if(name==='barcelona-sc')art=shield('#f3cf48','<path d="M18 17h29v22H18Z" fill="#fff"/><path d="M31 18v20m-12-10h27" stroke="#ce2d3b" stroke-width="5"/><path d="M51 18v20m9-20v20m9-20v20" stroke="#ce2d3b" stroke-width="5"/><path d="M20 54h56v14L48 87 20 68Z" fill="#f5cb35"/>'+stripes('#cf2b3c')+text('BSC','#1b2930',51,15));
+ else if(name==='olimpia')art=shield('#fff','<path d="M16 35h64v22H16Z" fill="#17242b"/>'+text('OLIMPIA','#fff',51,13));
+ else if(/sporting-cristal/.test(name))art=circle('#72c8e2',text('SC','#fff',66,41),'#fff');
+ else if(name==='bolivar')art=shield('#70b6db',text('BOLÍVAR','#fff',34,13)+star(48,59,17));
+ else if(/^(estudiantes|independiente|velez-sarsfield)$/.test(name))art=shield(name==='velez-sarsfield'?'#fff':'#d52d40',name==='velez-sarsfield'?'<path d="m19 30 29 31 29-31v16L48 78 19 46Z" fill="#174f97"/>':name==='estudiantes'?stripes('#fff')+text('EDLP','#172b34',31,15):text('CAI','#fff',60,31));
+ else if(name==='ajax')art=circle('#fff','<path d="m38 30 19-5 14 12-8 9 6 9-8 21-22-1-9-16 8-10-4-10Z" fill="none" stroke="#263530" stroke-width="3"/>'+text('AJAX','#c72b3b',22,12),'#c72b3b');
+ else if(name==='psv')art='<ellipse cx="48" cy="51" rx="42" ry="33" fill="#fff" stroke="#23332e" stroke-width="3"/><path d="m25 29 9 46m3-48 9 48m3-48 9 48m3-46 9 44" stroke="#d1263a" stroke-width="7"/>'+text('PSV','#17262c',62,29);
+ else if(name==='feyenoord')art=circle('#bc263a','<path d="M48 14a37 37 0 0 1 0 74Z" fill="#fff"/><circle cx="48" cy="51" r="28" fill="#c3293b"/>'+text('F','#f7e8b4',71,49),'#d6b659');
+ else if(name==='fc-porto')art=circle('#1554a4','<circle cx="48" cy="51" r="29" fill="#fff"/><path d="M33 36v34m15-39v43m15-38v34" stroke="#1554a4" stroke-width="7"/>'+text('FCP','#fff',23,9));
+ else if(name==='sporting-cp')art=shield('#187544','<path d="M18 37h60m-57 18h54m-45 18h36" stroke="#fff" stroke-width="8"/>'+text('SCP','#fff',31,18));
+ else if(/sc-braga/.test(name))art=shield('#fff','<path d="M48 16h31v32q0 23-31 40Z" fill="#ce2d40"/><path d="M32 63V42h7v-9h18v9h7v21H32Z" fill="#e4c472" stroke="#4a543d" stroke-width="2"/>'+text('SCB','#26422f',30,14));
+ else if(name==='celtic')art=circle('#168044','<circle cx="48" cy="51" r="28" fill="#fff"/><path d="M48 49c-24-20-28 13-4 9-21 20 12 25 10 3 21 20 27-14 3-10 20-23-14-27-9-2Z" fill="#168044"/>'+text('CELTIC','#fff',23,10));
+ else if(name==='rangers')art=circle('#fff',text('RFC','#1b4d95',68,38)+text('RANGERS','#1b4d95',22,9),'#1b4d95');
+ else if(name==='galatasaray')art='<path d="M48 10c-46 0-44 73 0 73 22 0 31-12 31-34H47v12h18c-9 22-43 7-43-16 0-20 25-28 38-15l11-11Q60 9 48 10Z" fill="#dfb234"/><path d="M37 31c-15 0-14 22 6 28 21 7 15 25 0 23l-14-6-7 12c38 25 65-14 30-33-17-9-10-14-2-8l9-9q-9-8-22-7Z" fill="#b8283a"/>';
+ else if(name==='fenerbahce')art=circle('#fff','<circle cx="48" cy="51" r="28" fill="#f0c638"/><path d="M30 36v34m18-42v47m18-39v34" stroke="#203b6f" stroke-width="10"/>'+text('FENERBAHÇE','#203b6f',22,8),'#203b6f');
+ else if(/besiktas/.test(name))art=shield('#fff',stripes('#17242b')+text('BJK','#17242b',31,18));
+ else if(/club-brugge/.test(name))art=crown+circle('#1d67b8',stripes('#17242b')+text('CLUB','#fff',31,11));
+ else if(/anderlecht/.test(name))art=crown+shield('#7451a2',text('RSC','#fff',57,25),'#e5c368');
+ else if(/dinamo-zagreb/.test(name))art=circle('#164c9d','<path d="M19 25h27v27H19Z" fill="#fff"/><path d="M19 25h9v9h-9m18-9h9v9h-9m-9 0h9v9h-9m-9 9h9v9h-9m18-9h9v9h-9" fill="#d3293e"/>'+text('d','#fff',76,60));
+ else if(/shakhtar/.test(name))art=shield('#ee8231','<path d="M19 36h58v15L48 82 19 51Z" fill="#17262c"/><path d="m32 45 29 23m0-23L32 68" stroke="#ed8e3a" stroke-width="5"/>'+text('SHAKHTAR','#fff',31,10));
+ else if(/dynamo-kyiv/.test(name))art='<path d="m48 5 42 46-42 46L6 51Z" fill="#fff" stroke="#1c5aa8" stroke-width="4"/>'+text('Д','#1c5aa8',68,51);
+ else if(/olympiacos/.test(name))art=circle('#d02e40','<circle cx="48" cy="51" r="27" fill="#fff"/><path d="m43 33 14 4 3 15-10 6v14H36V54l-7-5 6-11Z" fill="#d02e40"/>'+text('OLYMPIACOS','#fff',23,7));
+ else if(/panathinaikos/.test(name))art=circle('#197347','<circle cx="48" cy="51" r="27" fill="#fff"/><path d="M48 49c-22-20-30 12-8 12-2 17 20 17 18 0 22 0 14-32-10-12Zm0 10v13" fill="#197347" stroke="#197347" stroke-width="4"/>');
+ else if(/paok/.test(name))art=shield('#fff',stripes('#17262c')+text('PAOK','#17262c',31,17));
+ else if(/slavia-praha/.test(name))art=shield('#fff','<path d="M48 16h31v32q0 23-31 40Z" fill="#ce2b40"/>'+star(48,51,18,'#ce2b40'));
+ else if(/sparta-praha/.test(name))art=circle('#7f2c43',text('S','#fff',73,56),'#e0c878');
+ else {const hash=[...name].reduce((h,c)=>(h*31+c.charCodeAt(0))>>>0,0),style=hash%4,body=(style===0?stripes(b):style===1?`<path d="M16 57 77 19v17L27 75Z" fill="${b}"/>`:style===2?`<path d="M48 16h31v32q0 23-31 40Z" fill="${b}"/>`:`<path d="M17 45h62v15H17Z" fill="${b}"/>`)+text(short,ink,33,short.length>3?13:18);art=hash%5===0?circle(a,body):hash%5===1?'<ellipse cx="48" cy="51" rx="34" ry="44" fill="'+a+'" stroke="#243b32" stroke-width="3"/>'+body:shield(a,body)}
  return `<svg xmlns="http://www.w3.org/2000/svg" class="club-crest" viewBox="0 0 96 102" width="${Number(size)||24}" height="${Math.round((Number(size)||24)*1.0625)}" aria-hidden="true">${art}</svg>`}
  root.FutBRClubBadges={svg};if(typeof module!=='undefined')module.exports=root.FutBRClubBadges;
 })(globalThis);

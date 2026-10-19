@@ -108,7 +108,7 @@ CLUB_COLOR_GROUPS.push(
 const CLUB_THEME_BY_NAME=new Map();
 for(const [primary,secondary,names]of CLUB_COLOR_GROUPS)for(const name of names.split(';'))if(name)CLUB_THEME_BY_NAME.set(slugify(name),{primary,secondary});
 const CLUB_THEME_BY_ID=new Map();
-for(const club of [...Object.values(baseDatabase.leagues).flatMap(l=>l.clubs),...Object.values(STATE_CLUB_BASE.championships).flatMap(c=>c.clubs),...SAX,...EUO]){const theme=CLUB_THEME_BY_NAME.get(slugify(club.name));if(theme)CLUB_THEME_BY_ID.set(club.id,theme)}
+for(const club of [...Object.values(baseDatabase.leagues).flatMap(l=>l.clubs),...Object.values(STATE_CLUB_BASE.championships).flatMap(c=>c.clubs),...SAX,...EUO]){const theme=club.colors||CLUB_THEME_BY_NAME.get(slugify(club.name));if(theme)CLUB_THEME_BY_ID.set(club.id,theme)}
 const safeClubColor=c=>typeof c==='string'&&/^#[0-9a-f]{6}$/i.test(c);
 function clubPalette(club){if(club?.colors&&safeClubColor(club.colors.primary)&&safeClubColor(club.colors.secondary))return {...club.colors};return {...(CLUB_THEME_BY_ID.get(club?.id)||CLUB_THEME_BY_NAME.get(slugify(club?.name||''))||{primary:'#347653',secondary:'#d5ebba'})}}
 function colorRGB(hex){return [1,3,5].map(i=>parseInt(hex.slice(i,i+2),16))}

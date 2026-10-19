@@ -194,6 +194,19 @@ A tela inicial reúne um estádio ilustrado, a última carreira e a entrada da A
 
 Em **Arena → Meu time → Editar clube, uniforme e escudo**, combine três formatos, quatro padrões, três emblemas e uma paleta fixa. O escudo não aceita imagens, URLs, SVGs, texto ou coordenadas livres. As escolhas são validadas pelo mesmo módulo no navegador e no servidor e acompanham o time na conta, nas cartas e nas partidas. Times antigos recebem um escudo padrão.
 
-O controle **Música**, no canto inferior direito, permite desligar a trilha e ajustar o volume entre 0 e 25%. Ela começa baixinha (8%) após a primeira interação, respeitando as regras de reprodução do navegador, e pausa ao ocultar a aba. As preferências ficam neste navegador. A música é sintetizada localmente com Web Audio, sem arquivos externos ou faixas de terceiros.
+O controle **Música**, no canto inferior direito, permite desligar a trilha e ajustar o volume entre 0 e 25%. Ela começa baixinha (12%) após a primeira interação, respeitando as regras de reprodução do navegador, e pausa ao ocultar a aba. As preferências ficam neste navegador. A música é sintetizada localmente com Web Audio, sem arquivos externos ou faixas de terceiros.
 
 `npm run test:identity` verifica criação e persistência de escudos, rejeição de entradas livres, cobertura dos escudos dos clubes, layouts responsivos e preferências da música.
+
+
+## Ligas sul-americanas e europeias
+
+O catálogo possui 71 ligas jogáveis: as dez associações sul-americanas e 53 associações europeias, além das divisões inferiores já existentes. O arquivo `data/world-leagues.js` concentra os países, clubes, cores, modelos de camisa e cotas de acesso. A composição é uma base de referência editável, sem atualização oficial em tempo real; clubes sem elenco cadastrado recebem jogadores gerados.
+
+As novas carreiras têm copa nacional e classificação para Libertadores/Sul-Americana ou Champions/Europa League. A primeira temporada usa a força dos clubes; as seguintes usam a classificação final salva de cada liga. As eliminatórias em jogo único reduzem os classificados a 32, com folgas para os melhores cabeças de chave, antes dos oito grupos e do mata-mata. Campeões continentais entram na competição principal; o campeão da copa nacional ocupa uma vaga da associação quando necessário. O formato de oito grupos, as cotas e os coeficientes são adaptações do jogo, não uma reprodução das listas oficiais de acesso ou da fase de liga atual da UEFA.
+
+Liechtenstein tem copa, mas não possui liga nacional própria; não foi criada uma liga fictícia. A Rússia não integra o acesso continental desta base. Países de outras confederações americanas não foram incluídos na Libertadores/Sul-Americana.
+
+Carreiras em andamento preservam as copas e os resultados atuais. As novas ligas são acrescentadas ao mundo ao carregar; o novo acesso continental entra na próxima temporada. Pacotes antigos do editor recebem as novas ligas sem perder os clubes personalizados. A agenda mantém dias sem jogo brancos, diferencia abertura/fechamento da janela e permite rolagem horizontal no celular para preservar o tamanho dos textos.
+
+Validação: `npm run test:world` cobre início de carreira nas 63 associações, eliminatórias humanas e automáticas, grupos, mata-mata, unicidade de clubes, migrações e qualificação entre temporadas.

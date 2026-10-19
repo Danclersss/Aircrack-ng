@@ -2,7 +2,7 @@
 const crypto=require('node:crypto'),Rules=require('../arena/rules.js'),Journey=require('../arena/journey-rules.js');
 module.exports=function arenaService({db,E,pool,queue,matches,userMatches,getUser,profile,save,liveFor,production}){
  const rooms=new Map(),roomByUser=new Map(),fail=(message,status=400)=>{throw Object.assign(Error(message),{status})};
- const cosmetic={vertical:{name:'Listras clássicas',price:200},horizontal:{name:'Faixa de respeito',price:200}};
+ const cosmetic=Object.fromEntries(Object.entries(Rules.kitStyles).filter(([key])=>key!=='plain'));
  function draw(p,kind){const pack=Rules.packs[kind];if(!pack)fail('Pacote inválido.');const reveal=[];for(let i=0;i<pack.count;i++){const roll=crypto.randomInt(100);let cursor=0,tier;for(const [key,chance]of Object.entries(pack.odds)){cursor+=chance;if(roll<cursor){tier=key;break}}const options=pool.filter(p=>p.tier===tier),card=options[crypto.randomInt(options.length)],duplicate=p.owned.includes(card.id);if(duplicate)p.duplicates[card.id]=(p.duplicates[card.id]||0)+1;else p.owned.push(card.id);reveal.push({...card,rarity:card.tier,duplicate})}Rules.addCounter(p,'packs');return reveal}
  async function mutation(u,p,action){await db.exec('BEGIN IMMEDIATE');try{const extra=await action();await save(u.id,p);await db.exec('COMMIT');return {profile:p,...extra}}catch(e){await db.exec('ROLLBACK');throw e}}
  function available(id){const current=liveFor(id);if(current&&current.state.status!=='finished')fail('Termine a partida atual antes de começar outra.');}

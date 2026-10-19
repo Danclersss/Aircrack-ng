@@ -14,6 +14,11 @@ window.FutBRKits={
   else if(pattern==='chest')fabric=`<path d="M20 34H80V42H20Z" fill="${secondary}"/><path d="M20 45H80V53H20Z" fill="${tertiary}"/>`;
   else if(pattern==='sleeves')fabric=`<path d="M0 0H30V48H0ZM70 0H100V48H70Z" fill="${secondary}"/>`;
   else if(pattern==='tricolor')fabric=`<path d="M31 8H42V95H31Z" fill="${secondary}"/><path d="M45 8H55V95H45Z" fill="${white}"/><path d="M58 8H69V95H58Z" fill="${secondary}"/>`;
+  else if(pattern==='halves')fabric=`<path d="M50 0h50v100H50Z" fill="${secondary}"/>`;
+  else if(pattern==='center')fabric=`<path d="M39 0h22v100H39Z" fill="${secondary}"/>`;
+  else if(pattern==='hoops')fabric=`<path d="M0 29h100m-100 14h100M0 57h100M0 71h100M0 85h100" stroke="${secondary}" stroke-width="5"/>`;
+  else if(pattern==='pinstripe')fabric=`<path d="M34 8v90M42 8v90M50 8v90M58 8v90M66 8v90" stroke="${secondary}" stroke-width="2"/>`;
+  else if(pattern==='chevron')fabric=`<path d="M19 25 50 43 81 25v11L50 55 19 36Z" fill="${secondary}"/>`;
   const clipId='futbr-shirt-'+(++this.serial);
   const label=Number.isInteger(number)&&number>0&&number<100?String(number):'—';
   if(!valid(numberColor)){const rgb=primary.slice(1).match(/../g).map(x=>parseInt(x,16)/255);numberColor=rgb[0]*.2126+rgb[1]*.7152+rgb[2]*.0722>.57?'#17221a':'#ffffff'}
