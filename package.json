@@ -9,9 +9,9 @@
     "test:pvp": "node tests/arena-engine.cjs && node tests/arena-pvp.cjs",
     "setup:pvp-tests": "python3 tests/setup-turn.py",
     "start:online": "node server/server.cjs",
-    "test:online": "node tests/database-tls.cjs && node tests/startup-diagnostics.cjs && node tests/online-server.cjs && node tests/arena-progression.cjs && node tests/online-ui.cjs && node tests/collection-ui.cjs && node tests/ranked-ui.cjs && node tests/match-experience.cjs && node tests/field-playback.cjs && npm run test:journey",
-    "export:roblox": "node scripts/export-roblox.cjs",
-    "test:journey": "node tests/journey.cjs"
+    "test:online": "node tests/database-tls.cjs && node tests/startup-diagnostics.cjs && node tests/online-server.cjs && node tests/arena-progression.cjs && node tests/online-ui.cjs && node tests/collection-ui.cjs && node tests/ranked-ui.cjs && node tests/match-experience.cjs && node tests/field-playback.cjs && npm run test:journey && npm run test:identity",
+    "test:journey": "node tests/journey.cjs",
+    "test:identity": "node tests/game-identity.cjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"

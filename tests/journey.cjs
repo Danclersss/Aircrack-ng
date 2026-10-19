@@ -1,7 +1,7 @@
 'use strict';
-const assert=require('node:assert/strict'),{spawn,execFileSync}=require('node:child_process'),fs=require('node:fs'),os=require('node:os'),path=require('node:path'),{DatabaseSync}=require('node:sqlite'),{chromium}=require('playwright'),J=require('../arena/journey-rules.js');
+const assert=require('node:assert/strict'),{spawn}=require('node:child_process'),fs=require('node:fs'),os=require('node:os'),path=require('node:path'),{DatabaseSync}=require('node:sqlite'),{chromium}=require('playwright'),J=require('../arena/journey-rules.js');
 (async()=>{
- const exportFile=path.join(__dirname,'../roblox/src/ReplicatedStorage/FutBRData.luau'),exported=fs.readFileSync(exportFile,'utf8');execFileSync(process.execPath,['scripts/export-roblox.cjs']);assert.equal(fs.readFileSync(exportFile,'utf8'),exported,'Roblox catalogue must match the source rules');assert.match(exported,/return \{/);assert.match(exported,/\["schemaVersion"\]=1/);
+
  let p=J.migrate({coins:0,games:3,wins:1});assert.equal(p.clubXP,120);assert.equal(J.level(100).number,2);assert.throws(()=>J.settle(p,'cup',[2,0],2));assert.equal(J.settle(p,'cup',[0,0],0).coins,0);assert.equal(p.cupCleared.length,0);for(let i=0;i<5;i++){assert.ok(J.settle(p,'cup',[2,0],i).firstClear);assert.deepEqual(J.settle(p,'cup',[3,0],i),{coins:0,xp:0,tickets:0,firstClear:false})}assert.equal(p.packTickets,2);assert.equal(p.coins,850);const xp=p.clubXP;J.settle(p,'bot',[5,0]);assert.equal(p.clubXP,xp);
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'futbr-journey-')),port=18246,base='http://localhost:'+port,proc=spawn(process.execPath,['server/server.cjs'],{env:{...process.env,PORT:String(port),DATA_DIR:dir,MATCH_TICK_MS:'5',HALFTIME_MS:'80'},stdio:'ignore'});let browser,db;
  try{

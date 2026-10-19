@@ -187,6 +187,13 @@ Esses recursos exigem o servidor online (`npm run start:online`, Node 24+) e uma
 
 Validação específica: `npm run test:journey`. Inclui bloqueio de etapas, prêmios únicos, resgates concorrentes e navegação em computador/celular. A suíte `npm run test:online` também executa esses testes.
 
-## Próxima versão no Roblox
 
-`npm run export:roblox` gera um ModuleScript Luau com o catálogo de cartas e as regras de progressão. Veja [roblox/README.md](roblox/README.md) para importação no Studio, estrutura Rojo e próximos passos. A simulação e a interface ainda precisam ser portadas; o projeto web não é executável no Roblox.
+## Identidade visual e música
+
+A tela inicial reúne um estádio ilustrado, a última carreira e a entrada da Arena. Os escudos dos clubes são interpretações vetoriais das cores e formas de suas identidades, sem depender de imagens externas; não são artes oficiais.
+
+Em **Arena → Meu time → Editar clube, uniforme e escudo**, combine três formatos, quatro padrões, três emblemas e uma paleta fixa. O escudo não aceita imagens, URLs, SVGs, texto ou coordenadas livres. As escolhas são validadas pelo mesmo módulo no navegador e no servidor e acompanham o time na conta, nas cartas e nas partidas. Times antigos recebem um escudo padrão.
+
+O controle **Música**, no canto inferior direito, permite desligar a trilha e ajustar o volume entre 0 e 25%. Ela começa baixinha (8%) após a primeira interação, respeitando as regras de reprodução do navegador, e pausa ao ocultar a aba. As preferências ficam neste navegador. A música é sintetizada localmente com Web Audio, sem arquivos externos ou faixas de terceiros.
+
+`npm run test:identity` verifica criação e persistência de escudos, rejeição de entradas livres, cobertura dos escudos dos clubes, layouts responsivos e preferências da música.
