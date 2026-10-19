@@ -1,0 +1,10 @@
+{
+  "name": "FutBR",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "$className": "ReplicatedStorage",
+      "FutBRData": { "$path": "src/ReplicatedStorage/FutBRData.luau" }
+    }
+  }
+}

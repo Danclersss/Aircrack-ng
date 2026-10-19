@@ -1,6 +1,6 @@
 # FutBR 2026
 
-Jogo de gestão de futebol inspirado nos managers clássicos. Interface em português. A carreira funciona sem rede; a Arena é um modo PvP experimental entre dois navegadores, sem cadastro nesta primeira etapa.
+Jogo de gestão de futebol inspirado nos managers clássicos. Interface em português. A carreira funciona sem rede; a Arena tem contas, partidas online, coleção de cartas e progressão do clube.
 
 ## Jogar / desenvolver
 
@@ -175,3 +175,18 @@ O relógio online e o amistoso local avançam por padrão um minuto simulado a c
 Na Arena, os três mapas usam o mesmo iframe e a mesma área no desktop e no celular. O calor permanece no formato plano padrão e não usa mais um campo separado que expandia a página. O botão ativo recebe a mesma cor verde e `aria-pressed=true` nos três modos.
 
 `tests/field-playback.cjs` reproduz o placar final do vídeo, confirma camisas visíveis, compara pixels em quadros consecutivos, verifica as três dimensões e os botões ativos, e submete o resumo por zonas a atualizações mais rápidas que a apresentação. Os testes não acessam contas ou partidas de produção.
+
+
+## Jornada do clube
+
+Na Arena, abra **Jornada** para disputar a Copa do Bairro contra cinco clubes virtuais. Uma vitória desbloqueia a próxima etapa; empates e derrotas permitem tentar novamente. A primeira vitória de cada etapa rende moedas e XP. A terceira e a quinta também rendem um Pacote do clube, aberto pela própria Jornada. Repetir etapas não concede novos prêmios e a Copa não altera o ranking nem as missões ranqueadas.
+
+O nível do clube é cosmético: a Copa e partidas entre jogadores dão XP, sem aumentar atributos das cartas. Treinos automáticos de espera não dão XP. A aba reúne troféus e os últimos vinte resultados (exibindo os oito mais recentes). Os prêmios são validados no servidor e gravados junto com o resultado; o resgate de pacote consome um bilhete uma única vez.
+
+Esses recursos exigem o servidor online (`npm run start:online`, Node 24+) e uma conta. A versão estática continua atendendo a carreira local.
+
+Validação específica: `npm run test:journey`. Inclui bloqueio de etapas, prêmios únicos, resgates concorrentes e navegação em computador/celular. A suíte `npm run test:online` também executa esses testes.
+
+## Próxima versão no Roblox
+
+`npm run export:roblox` gera um ModuleScript Luau com o catálogo de cartas e as regras de progressão. Veja [roblox/README.md](roblox/README.md) para importação no Studio, estrutura Rojo e próximos passos. A simulação e a interface ainda precisam ser portadas; o projeto web não é executável no Roblox.
