@@ -2,7 +2,7 @@
 // Scheduling windows are a baseline, not an imported official fixture list.
 // A single club itinerary drives both the displayed dates and the match queue.
 const CALENDAR_VERSION=2;
-const CALENDAR_WINDOWS={A:['01-28','12-02'],B:['03-21','11-28'],C:['04-05','08-30'],D:['04-05','06-07']};
+const CALENDAR_WINDOWS={A:['01-28','12-02'],B:['03-21','11-28'],C:['04-05','08-30'],D:['04-05','06-07'],JPN:['02-07','12-06'],KOR:['02-15','11-29'],CHN:['03-01','11-29'],USA:['02-21','12-05'],NZL:['03-01','11-30']};
 function calendarDay(year,md){return Date.UTC(year,...[Number(md.slice(0,2))-1,Number(md.slice(3,5))])}
 function dateWindow(kind){const year=Number(state.season)||2026,br=FutBRWorld.region(state.leagueKey)==='SA';if(kind==='league'){const pair=CALENDAR_WINDOWS[state.leagueKey]||(br?['02-01','12-02']:null);return pair?[calendarDay(year,pair[0]),calendarDay(year,pair[1])]:[calendarDay(year,'08-15'),calendarDay(year+1,'05-24')]}if(kind==='est')return[calendarDay(year,'01-11'),calendarDay(year,'03-08')];if(kind==='cup')return br?[calendarDay(year,'02-18'),calendarDay(year,'12-06')]:[calendarDay(year,'09-01'),calendarDay(year+1,'05-30')];return br?[calendarDay(year,'04-07'),calendarDay(year,'11-28')]:[calendarDay(year,'09-16'),calendarDay(year+1,'05-29')]}
 function calendarBlackout(day){const year=Number(state.season)||2026;return state.leagueKey==='A'&&day>=calendarDay(year,'06-01')&&day<=calendarDay(year,'07-21')}

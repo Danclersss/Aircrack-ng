@@ -92,6 +92,18 @@
  else if(/panathinaikos/.test(name))art=circle('#197347','<circle cx="48" cy="51" r="27" fill="#fff"/><path d="M48 49c-22-20-30 12-8 12-2 17 20 17 18 0 22 0 14-32-10-12Zm0 10v13" fill="#197347" stroke="#197347" stroke-width="4"/>');
  else if(/paok/.test(name))art=shield('#fff',stripes('#17262c')+text('PAOK','#17262c',31,17));
  else if(/slavia-praha/.test(name))art=shield('#fff','<path d="M48 16h31v32q0 23-31 40Z" fill="#ce2b40"/>'+star(48,51,18,'#ce2b40'));
+ else if(/al-hilal/.test(name))art=shield('#174ba4','<path d="M57 25a24 24 0 1 0 0 47 19 19 0 1 1 0-47Z" fill="#fff"/>'+text('HILAL','#fff',86,11));
+ else if(/al-nassr/.test(name))art=circle('#eac43b','<circle cx="48" cy="51" r="29" fill="#215a9d"/>'+text('N','#f4d955',67,43)+text('AL NASSR','#215a9d',23,8));
+ else if(name==='al-ittihad')art=shield('#efd04d',stripes('#22272c')+text('ITTIHAD','#fff',31,13));
+ else if(name==='al-ahly')art=shield('#c52534','<path d="m20 49 24 7 4-25 4 25 24-7-18 23H38Z" fill="#20272b"/>'+text('AL AHLY','#fff',31,13));
+ else if(/zamalek/.test(name))art=shield('#fff','<path d="m24 57 25-22 22 22M43 40v32m-4-10 17 13" fill="none" stroke="#c52b3c" stroke-width="5"/>'+text('ZSC','#c52b3c',31,15));
+ else if(/mamelodi-sundowns/.test(name))art=circle('#edcc40','<circle cx="48" cy="51" r="26" fill="#24764d"/>'+text('MS','#fff',62,29)+text('SUNDOWNS','#28643d',23,8));
+ else if(/inter-miami/.test(name))art=circle('#edacbf','<circle cx="48" cy="51" r="30" fill="#20252d"/><path d="m25 48 19 10 4-19 4 19 19-10-12 22H37Z" fill="#edacbf"/>'+text('MIAMI','#20252d',23,8));
+ else if(name==='los-angeles-fc')art=shield('#20252c','<path d="M28 30v41h32M45 49h23m-23 0v25" fill="none" stroke="#c7a362" stroke-width="7"/>','#c7a362');
+ else if(name==='monterrey')art=shield('#fff',stripes('#173656')+text('M','#173656',34,28));
+ else if(name==='club-america')art=circle('#efe4a8','<path d="m40 27 20 8-10 15 9 12-14 16-7-27-12-6Z" fill="#215f8b"/>'+text('CA','#c52c3c',65,27),'#182e58');
+ else if(/urawa-red-diamonds/.test(name))art='<path d="m48 4 40 44-40 49L8 48Z" fill="#b92336" stroke="#1a2827" stroke-width="4"/>'+text('URAWA','#fff',42,13)+ball;
+ else if(/al-ain/.test(name))art=shield('#7550a3','<path d="M27 72V42h42v30M22 42h52M33 42V28h30v14M40 72V57h16v15" fill="none" stroke="#fff" stroke-width="4"/>');
  else if(/sparta-praha/.test(name))art=circle('#7f2c43',text('S','#fff',73,56),'#e0c878');
  else {const hash=[...name].reduce((h,c)=>(h*31+c.charCodeAt(0))>>>0,0),style=hash%4,body=(style===0?stripes(b):style===1?`<path d="M16 57 77 19v17L27 75Z" fill="${b}"/>`:style===2?`<path d="M48 16h31v32q0 23-31 40Z" fill="${b}"/>`:`<path d="M17 45h62v15H17Z" fill="${b}"/>`)+text(short,ink,33,short.length>3?13:18);art=hash%5===0?circle(a,body):hash%5===1?'<ellipse cx="48" cy="51" rx="34" ry="44" fill="'+a+'" stroke="#243b32" stroke-width="3"/>'+body:shield(a,body)}
  return `<svg xmlns="http://www.w3.org/2000/svg" class="club-crest" viewBox="0 0 96 102" width="${Number(size)||24}" height="${Math.round((Number(size)||24)*1.0625)}" aria-hidden="true">${art}</svg>`}
