@@ -210,3 +210,7 @@ Liechtenstein tem copa, mas não possui liga nacional própria; não foi criada 
 Carreiras em andamento preservam as copas e os resultados atuais. As novas ligas são acrescentadas ao mundo ao carregar; o novo acesso continental entra na próxima temporada. Pacotes antigos do editor recebem as novas ligas sem perder os clubes personalizados. A agenda mantém dias sem jogo brancos, diferencia abertura/fechamento da janela e permite rolagem horizontal no celular para preservar o tamanho dos textos.
 
 Validação: `npm run test:world` cobre início de carreira nas 63 associações, eliminatórias humanas e automáticas, grupos, mata-mata, unicidade de clubes, migrações e qualificação entre temporadas.
+
+### Contas, recompensas e anúncios opcionais
+
+A Arena não possui mais checkout ou venda de pacotes com dinheiro real. O pacote especial permanece reservado. A integração de anúncios rewarded exige configuração de inventário de um provedor aprovado: [instruções de anúncios](docs/ADS-SETUP.md). A [administração restrita](docs/ADMIN-SETUP.md) permite listar contas com dados mascarados e entregar prêmios por bugs, com segundo fator e perfis cifrados quando a chave do servidor estiver configurada. Veja também [hospedagem com repositório privado](docs/MONETIZATION.md).

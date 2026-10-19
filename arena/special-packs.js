@@ -1,0 +1,2 @@
+'use strict';
+(function(root){const pool=typeof module!=='undefined'?require('./players.js'):root.FutBRArenaPlayers;const founders={id:'founders',name:'Pacote Fundadores',available:false,items:['halves','chest','hoops','chevron','gold-crest','gold-kit'],cards:3,minRating:95,eligible:pool.filter(p=>p.rating>=95).map(({id,name,rating})=>({id,name,rating}))};root.FutBRSpecialPacks={founders};if(typeof module!=='undefined')module.exports=root.FutBRSpecialPacks})(globalThis);
