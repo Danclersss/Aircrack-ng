@@ -14,7 +14,7 @@
     "test:identity": "node tests/game-identity.cjs",
     "test:world": "node tests/world-leagues.cjs",
     "test:international": "node tests/international.cjs",
-    "test:commerce": "node tests/commerce.cjs"
+    "test:commerce": "node tests/automatic-pix.cjs && node tests/commerce.cjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"

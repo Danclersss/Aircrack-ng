@@ -3,9 +3,10 @@
 // stripe layout; no club crests, sponsors or manufacturer marks are rendered.
 window.FutBRKits={
  serial:0,
- svg({primary='#202327',secondary='#ffffff',pattern='plain',tertiary=null,number=null,numberColor=null}={}){
+ svg({primary='#202327',secondary='#ffffff',pattern='plain',finish='standard',tertiary=null,number=null,numberColor=null}={}){
   const valid=c=>typeof c==='string'&&/^#[0-9a-f]{6}$/i.test(c);
   primary=valid(primary)?primary:'#202327';secondary=valid(secondary)?secondary:'#ffffff';tertiary=valid(tertiary)?tertiary:secondary;
+  if(finish==='gold'){primary='#d6aa35';secondary='#573b15';tertiary='#ffed9b'}
   const white='#ffffff';const path='M28 12 40 8Q50 15 60 8L72 12 93 31 80 47 70 40 72 91Q50 96 28 91L30 40 20 47 7 31Z';
   let fabric='';
   if(pattern==='vertical')fabric=`<path d="M35 8H45V95H35ZM55 8H65V95H55Z" fill="${secondary}"/>`;
@@ -22,6 +23,6 @@ window.FutBRKits={
   const clipId='futbr-shirt-'+(++this.serial);
   const label=Number.isInteger(number)&&number>0&&number<100?String(number):'—';
   if(!valid(numberColor)){const rgb=primary.slice(1).match(/../g).map(x=>parseInt(x,16)/255);numberColor=rgb[0]*.2126+rgb[1]*.7152+rgb[2]*.0722>.57?'#17221a':'#ffffff'}
-  return `<svg class="jersey-svg" viewBox="0 0 100 100" role="img" aria-label="Camisa ${label==='—'?'sem número confirmado':'número '+label}"><defs><clipPath id="${clipId}"><path d="${path}"/></clipPath></defs><path d="${path}" fill="${primary}" stroke="#ffffffbb" stroke-width="1.2"/><g clip-path="url(#${clipId})">${fabric}</g><path d="M40 9Q50 23 60 9" fill="none" stroke="${secondary}" stroke-width="4"/><path d="M13 35 22 42M78 42 87 35" stroke="${secondary}" stroke-width="3"/><path d="M30 42 28 90M70 42 72 90" fill="none" stroke="#00000015" stroke-width="1.3"/><rect class="shirt-number-panel" x="27" y="40" width="46" height="37" rx="5" fill="${numberColor==='#ffffff'?'#17221a':'#ffffff'}" fill-opacity=".96"/><text x="50" y="71" text-anchor="middle" font-size="38" font-family="Arial,sans-serif" font-weight="900" fill="${numberColor}" stroke="${numberColor==='#ffffff'?'#00000080':'#ffffffbb'}" stroke-width="1.6" paint-order="stroke">${label}</text></svg>`
+  return `<svg class="jersey-svg" viewBox="0 0 100 100" role="img" aria-label="Camisa ${label==='—'?'sem número confirmado':'número '+label}"><defs><clipPath id="${clipId}"><path d="${path}"/></clipPath><linearGradient id="${clipId}-gold" x2="1" y2="1"><stop stop-color="#fff0a5"/><stop offset=".35" stop-color="#c59725"/><stop offset=".7" stop-color="#ffdf79"/><stop offset="1" stop-color="#a37419"/></linearGradient></defs><path d="${path}" fill="${finish==='gold'?'url(#'+clipId+'-gold)':primary}" stroke="#ffffffbb" stroke-width="1.2"/><g clip-path="url(#${clipId})">${fabric}</g><path d="M40 9Q50 23 60 9" fill="none" stroke="${secondary}" stroke-width="4"/><path d="M13 35 22 42M78 42 87 35" stroke="${secondary}" stroke-width="3"/><path d="M30 42 28 90M70 42 72 90" fill="none" stroke="#00000015" stroke-width="1.3"/><rect class="shirt-number-panel" x="27" y="40" width="46" height="37" rx="5" fill="${numberColor==='#ffffff'?'#17221a':'#ffffff'}" fill-opacity=".96"/><text x="50" y="71" text-anchor="middle" font-size="38" font-family="Arial,sans-serif" font-weight="900" fill="${numberColor}" stroke="${numberColor==='#ffffff'?'#00000080':'#ffffffbb'}" stroke-width="1.6" paint-order="stroke">${label}</text></svg>`
  }
 };
