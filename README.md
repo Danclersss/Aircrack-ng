@@ -194,7 +194,7 @@ A tela inicial reúne um estádio ilustrado, a última carreira e a entrada da A
 
 Em **Arena → Meu time → Editar clube, uniforme e escudo**, combine três formatos, quatro padrões, três emblemas e uma paleta fixa. O escudo não aceita imagens, URLs, SVGs, texto ou coordenadas livres. As escolhas são validadas pelo mesmo módulo no navegador e no servidor e acompanham o time na conta, nas cartas e nas partidas. Times antigos recebem um escudo padrão.
 
-O controle **Música**, no canto inferior direito, permite desligar a trilha e ajustar o volume entre 0 e 65%. A playlist tem dez instrumentais originais com passagem automática e controles de faixa. Ela começa em 28% após a primeira interação, respeitando as regras de reprodução do navegador, e pausa ao ocultar a aba. As preferências ficam neste navegador. A música é sintetizada localmente com Web Audio, sem arquivos externos ou faixas de terceiros.
+O controle **Música**, no canto inferior direito, permite desligar a trilha e ajustar o volume entre 0 e 100%. A playlist tem dez instrumentais originais com passagem automática e controles de faixa. Ela começa em 100% após a primeira interação, respeitando as regras de reprodução do navegador, e pausa ao ocultar a aba. As preferências ficam neste navegador. A música é sintetizada localmente com Web Audio, sem arquivos externos ou faixas de terceiros.
 
 `npm run test:identity` verifica criação e persistência de escudos, rejeição de entradas livres, cobertura dos escudos dos clubes, layouts responsivos e preferências da música.
 
@@ -214,3 +214,7 @@ Validação: `npm run test:world` cobre início de carreira nas 63 associações
 ### Contas, recompensas e anúncios opcionais
 
 A Arena não possui mais checkout ou venda de pacotes com dinheiro real. O pacote especial permanece reservado. A integração de anúncios rewarded exige configuração de inventário de um provedor aprovado: [instruções de anúncios](docs/ADS-SETUP.md). A [administração restrita](docs/ADMIN-SETUP.md) permite listar contas com dados mascarados e entregar prêmios por bugs, com segundo fator e perfis cifrados quando a chave do servidor estiver configurada. Veja também [hospedagem com repositório privado](docs/MONETIZATION.md).
+
+### Apresentação de estádio e efeitos
+
+O visual usa painéis verde escuro, navegação lateral no computador e menus em grade no celular. A música tem escala de volume até 100%; os efeitos de gol, cartões, intervalo e fim de jogo possuem controle próprio. Sons exigem uma interação inicial e não repetem eventos ao restaurar a partida. Cansaço e recuperação de energia são exclusivos das ranqueadas; amistosos, treinos, Copa do Bairro e carreira usam energia cheia.
