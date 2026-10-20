@@ -18,7 +18,7 @@ A sessão administrativa dura dez minutos, usa cookie HttpOnly/SameSite, exige s
 
 ## Recompensas
 
-Use o ID da conta, confira clube e e-mail mascarado e descreva o bug. Pacotes comuns são entregues como tickets, cartas já possuídas viram repetidas e o pacote Fundadores mantém os cosméticos dourados e três cartas 95+ de pessoas diferentes. Não há checkout, Pix, estoque comercial ou compra com dinheiro real.
+Use o ID da conta, confira clube e e-mail mascarado e descreva o bug. Pacotes comuns são entregues como tickets, cartas já possuídas viram repetidas e o pacote dourado é entregue como ticket e contém somente três cartas 95+ de pessoas diferentes, sem cosméticos. Não há checkout, Pix, estoque comercial ou compra com dinheiro real.
 
 ## Como premiar seus amigos por feedbacks
 
@@ -26,6 +26,6 @@ Use o ID da conta, confira clube e e-mail mascarado e descreva o bug. Pacotes co
 2. Ele descreve o problema e copia o relato. O texto inclui o ID da própria conta. Ele envia esse texto e, se possível, um vídeo ou imagem pelo canal em que vocês já conversam. O jogo não publica relatos ou dados de outras contas.
 3. Você abre `/arena/admin.html`, entra com o segredo e o código do autenticador e pesquisa o ID informado.
 4. Selecione a conta, informe moedas e/ou quantidade de pacotes. Use uma referência única, por exemplo `feedback-amigo-20261019-01`, e uma mensagem de agradecimento.
-5. Revise o clube e o ID e confirme. O jogador vê um aviso ao atualizar sua sessão. Os pacotes ficam em **Jornada → Seus pacotes conquistados → Abrir recompensa**.
+5. Revise o clube e o ID e confirme. O jogador vê um aviso ao atualizar sua sessão. Os pacotes comuns ficam em **Jornada → Seus pacotes conquistados → Abrir recompensa**; o dourado aparece na **Loja → Pacotes dourados conquistados**.
 
 Nenhum prêmio é automático por enviar um relato: você decide após conferir. Entregas repetidas com a mesma referência não duplicam o prêmio.

@@ -148,7 +148,7 @@ O login pode ser aberto na página inicial e na Arena. Na versão online, cadast
 
 A coleção contém 85 cartas, entre jogadores do elenco inicial, estrelas atuais, ídolos aposentados e edições de auge. Atributos e forças são estimativas do jogo. Versões diferentes da mesma pessoa podem coexistir na coleção, mas apenas uma pode ocupar os onze. A escalação automática respeita posição, formação e essa restrição; seis formações, pressão, construção e postura alteram o plano de jogo. Capitão e cobradores de pênaltis, faltas, escanteios e laterais usam atributos próprios; a interface sugere os melhores especialistas. O álbum permite buscar cartas e filtrar categorias.
 
-A loja oferece três pacotes com probabilidades por carta visíveis antes da compra e sorteio no servidor. A abertura rompe o lacre e revela cartas individualmente, com opção de pular. Repetidas agora ficam guardadas: cinco cópias extras podem ser trocadas por um pacote do clube, preservando a primeira cópia. Compras usam apenas moedas do jogo. Contas antigas mantêm clubes, coleção e saldo; a migração ocorre sem reiniciar progresso.
+A loja oferece três pacotes com probabilidades por carta visíveis antes da compra e sorteio no servidor. A abertura rompe o lacre e revela cartas individualmente, com opção de pular. Repetidas agora ficam guardadas: 5 cópias extras podem ser trocadas por um pacote do clube, 15 por Global e 30 por Lendas, preservando a primeira cópia. Compras usam apenas FutCoins do jogo. Contas antigas mantêm clubes, coleção e saldo; a migração ocorre sem reiniciar progresso.
 
 Amistosos online usam salas com código de oito caracteres. Quem recebe o convite entra na mesma partida, com início automático após até 15 segundos de preparação e intervalo de até um minuto. Amistosos ficam no histórico e não concedem recompensas de ranqueada. A conexão direta WebRTC continua disponível como alternativa local avançada.
 
@@ -218,3 +218,11 @@ A Arena não possui mais checkout ou venda de pacotes com dinheiro real. O pacot
 ### Apresentação de estádio e efeitos
 
 O visual usa painéis verde escuro, navegação lateral no computador e menus em grade no celular. A música tem escala de volume até 100%; os efeitos de gol, cartões, intervalo e fim de jogo possuem controle próprio. Sons exigem uma interação inicial e não repetem eventos ao restaurar a partida. Cansaço e recuperação de energia são exclusivos das ranqueadas; amistosos, treinos, Copa do Bairro e carreira usam energia cheia.
+
+### Comunidade e ouro
+
+A aba Social oferece nickname público único, solicitações por ID/nome, amigos, convites e presentes de FutCoins ou tickets de pacotes comuns. Presentes são debitados da conta de origem e têm confirmação, transação e idempotência. Limite em 24 horas: 2.000 FutCoins e três pacotes; cada envio permite até 1.000 FutCoins.
+
+O pacote Dourado entrega três cartas 95+ de pessoas distintas e nenhum cosmético. Pode ser concedido pela administração por relatos de bugs, pelo marco único Legado de ouro (500 ranqueadas, 250 vitórias, 1.000 gols e 50 trocas) ou por evolução de Lendas (0,1%). As evoluções não encadeiam no mesmo pacote: clube → Global 1,8% ou Lendas 0,2%; Global → Lendas 0,5%.
+
+Nas salas e convites para amistosos humanos, cada lado pode usar seu clube da Arena ou um dos clubes da base mundial. Elencos de referência são parciais e atletas gerados completam posições; não é uma importação oficial atualizada. Essa seleção não muda a coleção, o time salvo ou a elegibilidade ranqueada.

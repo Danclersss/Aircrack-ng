@@ -1,6 +1,6 @@
 # Estado atual da monetização
 
-Todo o sistema de venda de pacotes foi removido: checkout, Pix, pagamento manual/automático e confirmação de compras. O pacote Fundadores permanece reservado, sem preço ou botão de compra, para uma forma futura de obtenção. Pacotes com moedas do jogo e trocas de repetidas continuam disponíveis.
+Todo o sistema de venda de pacotes foi removido: checkout, Pix, pagamento manual/automático e confirmação de compras. O pacote Dourado é uma recompensa de cartas, sem venda, escudo ou camisa dourados. Pacotes com moedas do jogo e trocas de repetidas continuam disponíveis.
 
 Anúncios são voluntários e dependem de uma conta aprovada e inventário configurado. Veja [ADS-SETUP.md](ADS-SETUP.md). Administração e recompensas por bugs estão descritas em [ADMIN-SETUP.md](ADMIN-SETUP.md).
 

@@ -21,3 +21,16 @@ Sem unidade ou provedor configurado, o botão permanece indisponível e o jogo i
 7. Confira que fechar antes não entrega moedas e concluir entrega uma única recompensa. Ausência de demanda, bloqueadores, dispositivo incompatível ou pendência de aprovação podem impedir exibição mesmo com a variável correta.
 
 As moedas são virtuais, não transferíveis e sem conversão em dinheiro. Se o provedor pedir consentimento ou uma CMP certificada para o público atendido, configure esse requisito antes da ativação. O botão voluntário do jogo não substitui as exigências de privacidade do provedor.
+
+
+## Criar a conta de editor desde o início
+
+Para receber receita, use **AdSense/Ad Manager**. O produto **Google Ads** serve para pagar por campanhas de publicidade, e não é a conta necessária para este botão de recompensa.
+
+1. Acesse [AdSense](https://adsense.google.com/start/) com sua conta Google, escolha começar e informe seus dados reais, país e o endereço `https://futbr-arena.onrender.com`. Conclua as etapas de cadastro, informações de pagamento e análise exigidas pelo Google. Não envie senhas ou documentos no chat.
+2. Na verificação do site, se o Google oferecer **meta tag**, copie o identificador público `ca-pub-` seguido de 16 dígitos. No Render → Environment, configure `GOOGLE_ADSENSE_ACCOUNT` com esse valor e implante novamente. O servidor inclui a meta tag `google-adsense-account` no HTML. Volte ao painel Google para verificar. Se a opção indicada for `ads.txt`, configure `ADS_TXT` com o registro exato fornecido. Não use dados de exemplo.
+3. Aguarde o resultado da análise e atenda às solicitações exibidas na sua conta. Cadastro e verificação não garantem aprovação ou exibição de anúncios.
+4. Entre no [Google Ad Manager](https://admanager.google.com/home/) com a mesma conta. O fluxo pode exigir AdSense ativo. Configure a rede conforme as instruções apresentadas e habilite inventário web com recompensa quando disponível para sua conta.
+5. Crie a unidade rewarded e configure `GOOGLE_REWARDED_AD_UNIT` no Render com o caminho `/numero-da-rede/nome-da-unidade`. Essa unidade é diferente do identificador `ca-pub-...`. Depois da implantação, valide com as ferramentas de teste do Google e confira o botão na Loja.
+
+Não compre campanhas no Google Ads para tentar habilitar monetização. A hospedagem permanece no Render Free; análise, inventário e receita dependem da sua conta e do provedor.
