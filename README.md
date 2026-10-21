@@ -248,3 +248,11 @@ As chances por carta foram reduzidas: Clube 85% comum / 12% rara / 2,8% estrela 
 A entrada padrão da Arena é a central de ranqueadas: busca real, identidade do clube, divisão e progresso, pontuação por resultado e última partida. Os cinco atalhos seguem Amistoso → Escalação → Objetivos → Jornada → Loja. Configurações ficam no cabeçalho. Links diretos `?view=lobby`, `?view=squad` e demais telas continuam válidos.
 
 Novos resultados guardam nomes e escudos dos dois clubes no histórico; em resultados legados sem escudo registrado, a interface usa um símbolo neutro. `npm run test:hub` verifica busca/cancelamento, atalhos, contraste nos dois temas e layouts entre 320 e 1920px.
+
+### Telas de gestão da Arena
+
+`manager-screens.js` reorganiza os controles existentes sem trocar as regras das partidas. Amistosos reúne criação/entrada de sala, amigos aceitos com convite e cinco resultados recentes (amistosos humanos ou treinos identificados). Escalação mostra cartas por posição e reservas em uma coluna à direita no computador; no celular, a coluna fica logo abaixo do campo. As seis formações distribuem as cartas sem sobreposição. Dados completos dos titulares, táticas e funções continuam visíveis abaixo.
+
+Objetivos usam uma lista com progresso, recompensa e ação de coleta ou acesso ao modo relevante. A Jornada mantém as cinco etapas reais do jogo, com painéis e desenhos próprios para cada uma, preservados ao abrir recompensas. O menu lateral ganhou ícones e rótulos compactos. `npm run test:screens` verifica salas, convites, últimos resultados, trocas persistidas, formações, coleta, etapas e leitura em diferentes tamanhos e temas.
+
+O perfil mantém `friendlyHistory` separado, limitado a cinco amistosos/treinos. Assim, novas ranqueadas não removem esses resultados da tela de amistosos. Perfis anteriores aproveitam os resultados ainda disponíveis no histórico geral.
