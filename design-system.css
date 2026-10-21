@@ -131,3 +131,43 @@
  .tracker-stats{background:#fff!important;color:#183c2b!important;border:1px solid #cbd9ce!important;border-radius:12px!important}
  .tracker-stats header,.tracker-stat-row,.possession-label{color:#183c2b!important}
 }
+@layer futbr-design {
+ /* Center the page canvas, preserving readable alignment within tables and forms. */
+ .portal,body.game-night .portal{max-width:1440px!important;margin-inline:auto!important;padding-inline:24px!important}
+ main{margin-inline:auto!important}
+ .stadium-hero{padding:32px!important;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:32px!important;align-items:center!important}
+ .stadium-copy{padding:0!important;min-width:0!important}.stadium-art{min-height:0!important;align-self:center!important}.stadium-art img{width:100%!important;height:auto!important;display:block!important;object-fit:contain!important}
+ .hero-actions{display:flex!important;align-items:center!important;gap:14px!important;flex-wrap:wrap!important}.hero-pills{display:flex!important;gap:10px!important;flex-wrap:wrap!important;margin-top:22px!important}.hero-pills span{font-size:14px!important;padding:8px 12px!important;border:1px solid #638358!important;border-radius:8px!important}.hero-scroll{font-size:14px!important;margin-top:18px!important}
+ .stadium-copy .eyebrow{font-size:13px!important}.stadium-copy>p{font-size:17px!important}.hero-actions a,.hero-actions button{font-size:16px!important;min-height:52px!important}
+ .competition-emblem{color:var(--emblem-color,var(--competition,#24523a))!important}
+ .competition-card{border-left:4px solid var(--competition)!important;min-width:0!important}.competition-card strong{font-size:14px!important}
+ .calendar-day.has-fixture{background:color-mix(in srgb,var(--competition) 38%,#10291f)!important;border-top:4px solid var(--competition)!important}.calendar-fixture{background:transparent!important}.calendar-day .fixture-comp{font-size:13px!important}
+ .mission-card.ready{background:#e4f7e8!important;border:2px solid #248148!important;color:#153f25!important;box-shadow:0 3px 12px #1e6a2820!important}.mission-card.ready button{background:#237640!important;color:#fff!important;border-color:#237640!important}.mission-card.claimed{background:#f0f3ef!important}
+ .duplicate-actions{display:flex!important;gap:10px!important;flex-wrap:wrap!important;align-items:center!important;margin:16px 0!important}.duplicate-actions span{font-weight:700!important}
+ .role-settings,.condition-rules{margin-top:20px!important}.role-settings h3,.condition-rules h3{margin-bottom:14px!important}.pack-odds{margin:16px 0!important}.pack-odds h4{font-size:14px!important}.pack-odds p{font-size:13px!important}
+ .foil-pack{border-radius:4px!important;box-shadow:0 12px 22px #071c2933,inset 0 0 0 5px #ffffff12!important;border-width:2px!important;background:linear-gradient(145deg,#316447,#133b2b 65%,#214f36)!important}
+ .foil-pack.scout{background:linear-gradient(145deg,#28648e,#123f68 65%,#1d547f)!important}.foil-pack.legends{background:linear-gradient(145deg,#fff0c7,#d6ba7b 65%,#eddbad)!important}.foil-pack.golden{background:linear-gradient(145deg,#ffebb0,#c99e36 65%,#e6c565)!important}
+ .foil-pack::before{display:block!important;content:''!important;position:absolute!important;inset:10px!important;border:1px solid currentColor!important;opacity:.25!important;pointer-events:none!important;background:none!important}
+ .foil-pack .pack-symbol{stroke-width:1.5!important}.foil-pack small,.foil-pack .pack-subtitle{font-size:10px!important}.foil-pack strong{font-size:12px!important}
+ .trophy{position:relative!important;border-top:4px solid var(--award-color,#537966)!important}.trophy:nth-child(2){--award-color:#a07026}.trophy:nth-child(3){--award-color:#315ea5}.trophy:nth-child(4){--award-color:#7954a5}.trophy>span{color:var(--award-color,#537966)!important}.trophy.earned{background:#fbf5e5!important}
+ .trophy-icon{display:block!important;width:56px!important;height:64px!important;margin-bottom:12px!important;color:var(--award-color,#537966)!important}
+ @media(min-width:1100px){body.game-night .portal{padding-left:210px!important}.portal-head nav{left:max(20px,calc((100vw - 1440px)/2 + 20px))!important}}
+ @media(max-width:760px){.portal,body.game-night .portal{padding-inline:16px!important}.stadium-hero{grid-template-columns:1fr!important;padding:24px!important;gap:24px!important}.stadium-copy{text-align:center!important}.hero-actions,.hero-pills{justify-content:center!important}.hero-scroll{justify-content:center!important}.stadium-art{width:100%!important;max-width:480px!important;margin-inline:auto!important}.store-product{grid-template-columns:1fr!important}.product-art{min-height:235px!important}.foil-pack{width:155px!important;height:210px!important}.foil-pack b{font-size:20px!important}.foil-pack .pack-symbol{width:58px!important;height:58px!important}.special-preview{grid-template-columns:1fr!important}.founder-art{height:240px!important}}
+}
+
+@layer futbr-design {
+ .gcards{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr))!important;gap:18px!important;align-items:start!important}.gcards>.card{min-width:0!important;padding:18px!important}.gcards table{width:100%!important;table-layout:fixed!important;white-space:normal!important}.gcards th,.gcards td{padding:10px 5px!important;font-size:13px!important;overflow-wrap:anywhere!important}.gcards th:nth-child(2),.gcards td:nth-child(2){width:46%!important}.gcards .club-label{display:flex!important;min-width:0!important;gap:7px!important}.gcards .club-label span{white-space:normal!important;overflow:visible!important;text-overflow:clip!important}.gcards .club-label img,.gcards .club-label svg{flex-shrink:0!important}
+ .starting-list .player-name,.bench-card strong,.mission-card h3{white-space:normal!important;overflow:visible!important;text-overflow:clip!important}.bench{max-height:none!important;overflow:visible!important}
+}
+@layer futbr-design {
+ .mission-card.claimed .mission-icon{background:#315b40!important;color:#fff!important}.mission-card.ready .mission-icon{background:#237640!important;color:#fff!important}
+}
+@layer futbr-design {
+ .gcards .club-with-crest{display:flex!important;align-items:center!important;gap:7px!important;white-space:normal!important;min-width:0!important}.gcards .club-with-crest>span{white-space:normal!important;overflow-wrap:anywhere!important}.gcards .club-crest{flex-shrink:0!important;width:24px!important;height:28px!important}
+}
+@layer futbr-design {
+ .stadium-copy{text-align:center!important}.hero-actions,.hero-pills,.hero-scroll{justify-content:center!important}.hero-scroll,.hero-scroll span,.hero-pills span{font-size:14px!important}.product-body{text-align:center!important}.product-body .eyebrow{font-size:12px!important}.pack-odds p{line-height:1.7!important}.section-heading{align-items:center!important}
+}
+@layer futbr-design {
+ .hero-shortcut{display:flex!important;justify-content:center!important;align-items:center!important;gap:14px!important;font-size:14px!important;min-height:44px!important;margin:16px auto 0!important;color:#edf5e7!important}.hero-shortcut span{font-size:24px!important;color:#d0fb65!important}
+}
