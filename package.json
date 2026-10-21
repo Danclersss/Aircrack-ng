@@ -16,7 +16,8 @@
     "test:international": "node tests/international.cjs",
     "test:community": "node tests/community-rules.cjs && node tests/community-ui.cjs && node tests/experience-polish.cjs && node tests/social-golden.cjs",
     "test:design": "node tests/design-readability.cjs",
-    "test:manager": "node tests/pack-odds.cjs && node tests/manager-update.cjs"
+    "test:manager": "node tests/pack-odds.cjs && node tests/manager-update.cjs",
+    "test:hub": "node tests/arena-hub.cjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"

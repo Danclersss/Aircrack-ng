@@ -242,3 +242,9 @@ O menu separa Social, Minha conta, Arena PvP, Carreira, Editor, Amistosos e Conf
 As chances por carta foram reduzidas: Clube 85% comum / 12% rara / 2,8% estrela / 0,2% ídolo; Global 68% / 26% / 5,5% / 0,5%; Lendas 0% / 65% / 30% / 5%. O sorteio do servidor usa centésimos percentuais; chances de evolução do pacote permanecem separadas. Cartas já obtidas não são alteradas.
 
 `npm run test:manager` verifica limites das probabilidades, IDs persistentes, busca por número, preferências, amistoso imediato com clube mundial e partidas de seleção com retorno ao clube.
+
+### Central da Arena
+
+A entrada padrão da Arena é a central de ranqueadas: busca real, identidade do clube, divisão e progresso, pontuação por resultado e última partida. Os cinco atalhos seguem Amistoso → Escalação → Objetivos → Jornada → Loja. Configurações ficam no cabeçalho. Links diretos `?view=lobby`, `?view=squad` e demais telas continuam válidos.
+
+Novos resultados guardam nomes e escudos dos dois clubes no histórico; em resultados legados sem escudo registrado, a interface usa um símbolo neutro. `npm run test:hub` verifica busca/cancelamento, atalhos, contraste nos dois temas e layouts entre 320 e 1920px.
