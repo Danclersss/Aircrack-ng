@@ -14,7 +14,8 @@
     "test:identity": "node tests/game-identity.cjs",
     "test:world": "node tests/world-leagues.cjs",
     "test:international": "node tests/international.cjs",
-    "test:community": "node tests/community-rules.cjs && node tests/community-ui.cjs && node tests/experience-polish.cjs && node tests/social-golden.cjs"
+    "test:community": "node tests/community-rules.cjs && node tests/community-ui.cjs && node tests/experience-polish.cjs && node tests/social-golden.cjs",
+    "test:design": "node tests/design-readability.cjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"

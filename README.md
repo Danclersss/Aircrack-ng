@@ -226,3 +226,7 @@ A aba Social oferece nickname público único, solicitações por ID/nome, amigo
 O pacote Dourado entrega três cartas 95+ de pessoas distintas e nenhum cosmético. Pode ser concedido pela administração por relatos de bugs, pelo marco único Legado de ouro (500 ranqueadas, 250 vitórias, 1.000 gols e 50 trocas) ou por evolução de Lendas (0,1%). As evoluções não encadeiam no mesmo pacote: clube → Global 1,8% ou Lendas 0,2%; Global → Lendas 0,5%.
 
 Nas salas e convites para amistosos humanos, cada lado pode usar seu clube da Arena ou um dos clubes da base mundial. Elencos de referência são parciais e atletas gerados completam posições; não é uma importação oficial atualizada. Essa seleção não muda a coleção, o time salvo ou a elegibilidade ranqueada.
+
+### Interface e legibilidade
+
+`design-system.css` é a camada visual principal, carregada no cabeçalho para evitar mudanças de aparência após a primeira renderização. Usa uma paleta fixa verde/lima, painéis claros com texto escuro e uma única família de fonte com pesos 400/700. A cor do uniforme não altera a interface. A escalação organiza campo e táticas na mesma coluna, e funções avançadas/regras usam painéis recolhíveis. `npm run test:design` verifica contraste em telas da Arena e carreira, tamanhos móveis, ausência do escudo antigo na primeira renderização e o espaço abaixo do campo.
