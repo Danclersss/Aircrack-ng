@@ -230,3 +230,15 @@ Nas salas e convites para amistosos humanos, cada lado pode usar seu clube da Ar
 ### Interface e legibilidade
 
 `design-system.css` é a camada visual principal, carregada no cabeçalho para evitar mudanças de aparência após a primeira renderização. Usa uma paleta fixa verde/lima, painéis claros com texto escuro e uma única família de fonte com pesos 400/700. A cor do uniforme não altera a interface. A escalação organiza campo e táticas na mesma coluna, e funções avançadas, regras e chances dos pacotes permanecem visíveis. Repetidas podem ser selecionadas automaticamente, priorizando menor OVR; missões prontas aparecem em verde antes das pendentes e coletadas. Competições e agenda conservam cores próprias. A abertura anima o botão externo para evitar conflitos com a arte do envelope; movimento reduzido usa uma transição de opacidade. `npm run test:design` verifica contraste em telas da Arena e carreira, tamanhos móveis, ausência do escudo antigo na primeira renderização e o espaço abaixo do campo.
+
+### Gestão de seleções, preferências e IDs públicos
+
+As etapas de seleções que envolvem o treinador abrem o mesmo campo e controles da carreira. O placar jogado é aplicado ao torneio ou às eliminatórias; os outros jogos são simulados. O contexto do clube fica salvo durante a partida, inclusive ao recarregar, e retorna sem alterar orçamento, rodada ou tabela da liga. Os escudos nacionais são interpretações vetoriais próprias; elencos continuam mesclando nomes cadastrados e atletas gerados.
+
+O menu separa Social, Minha conta, Arena PvP, Carreira, Editor, Amistosos e Configurações. Treinos contra bot podem começar diretamente e não rendem classificação ou FutCoins. Temas claro/escuro, música e volumes são guardados neste navegador. A trilha instrumental e o apito são sintetizados, sem gravações comerciais.
+
+`player_numbers` associa cada conta a um ID público de sete dígitos. Contas existentes recebem números sem trocar UUIDs, vínculos sociais ou dados cifrados; registros novos recebem a próxima posição dentro da transação de cadastro. O contador persiste no mesmo banco. Busca social e premiação administrativa aceitam esse número. O ID público não é uma credencial de acesso.
+
+As chances por carta foram reduzidas: Clube 85% comum / 12% rara / 2,8% estrela / 0,2% ídolo; Global 68% / 26% / 5,5% / 0,5%; Lendas 0% / 65% / 30% / 5%. O sorteio do servidor usa centésimos percentuais; chances de evolução do pacote permanecem separadas. Cartas já obtidas não são alteradas.
+
+`npm run test:manager` verifica limites das probabilidades, IDs persistentes, busca por número, preferências, amistoso imediato com clube mundial e partidas de seleção com retorno ao clube.
