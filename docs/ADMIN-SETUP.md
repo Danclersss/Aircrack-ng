@@ -29,3 +29,29 @@ Use o ID da conta, confira clube e e-mail mascarado e descreva o bug. Pacotes co
 5. Revise o clube e o ID e confirme. O jogador vê um aviso ao atualizar sua sessão. Os pacotes comuns ficam em **Jornada → Seus pacotes conquistados → Abrir recompensa**; o dourado aparece na **Loja → Pacotes dourados conquistados**.
 
 Nenhum prêmio é automático por enviar um relato: você decide após conferir. Entregas repetidas com a mesma referência não duplicam o prêmio.
+
+## Painel de moedas e pacotes limitados
+
+Acesse **Configurações → Administração do jogo**, ou abra `/arena/admin.html`. Se faltar configuração, a página mostra o guia de ativação. A administração só funciona após configurar os três segredos no serviço; publicar o código não cria uma senha administrativa automaticamente.
+
+Para o envio solicitado:
+
+1. Entre com seu token administrativo e o código do autenticador.
+2. Busque o ID **0000004** e confira o clube retornado.
+3. Clique em **Preparar recompensa**. Informe **1.000.000** em FutCoins e **25** em Pacotes limitados dourados. Deixe Pacotes do clube em **0** se quiser apenas os limitados.
+4. Informe uma referência única, por exemplo `presente-0000004-20261023`, e uma mensagem para o jogador.
+5. Revise e confirme uma única vez. A entrega aparece no histórico, e o saldo atualizado aparece na busca da conta. Repetir a mesma referência com os mesmos valores não duplica a entrega.
+
+Cada entrega permite até 1.000.000 de moedas, 100 pacotes comuns, 100 limitados e dez cartas específicas. O histórico mostra as últimas 100 entregas e pode ser filtrado pelo ID da busca. Pacotes limitados são tickets dourados de três cartas 95+, sem uniformes ou escudos dourados. Nenhum item é creditado apenas por abrir o painel.
+
+## Gerar os segredos no seu computador
+
+Na pasta do projeto, com Node.js instalado, execute:
+
+```sh
+node server/create-admin-config.cjs
+```
+
+O comando cria `.env.admin.local`, ignorado pelo Git, sem mostrar os segredos no terminal e sem sobrescrever um arquivo existente. Abra esse arquivo somente no seu computador. Copie `ADMIN_ACCESS_TOKEN` e `ADMIN_TOTP_SECRET` para **Render → seu serviço → Environment**. No Google Authenticator, Microsoft Authenticator ou equivalente, adicione uma chave manual, escolha código baseado em tempo e informe o valor de `ADMIN_TOTP_SECRET`.
+
+Se `ACCOUNT_DATA_KEY` já estiver no Render, **mantenha exatamente o valor atual**. Somente numa primeira configuração, em que essa variável ainda não exista, gere o arquivo com `node server/create-admin-config.cjs --new-data-key` e configure também essa chave. O arquivo não ativa nada sozinho no servidor; após copiar as variáveis, salve e faça o redeploy. Guarde os segredos com segurança e não envie o arquivo pelo chat.
